@@ -1,0 +1,58 @@
+html {
+    font-family: sans-serif;
+    width: 50%;
+}
+
+body {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+
+h1 {
+    font-weight: 900;
+    font-size: 50px;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: #f15a08;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    color: #f15a08;
+    font-size: 16px;
+}
+
+.nav-ul {
+    justify-content: flex-end;
+}
+
+.footer-ul {
+    justify-content: center;
+    font-size: 14px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alt-font {
+    font-family: 'Space Mono', monospace;
+}
+
+.copyright {
+    font-weight: 200;
+    font-size: 14px;
+}
