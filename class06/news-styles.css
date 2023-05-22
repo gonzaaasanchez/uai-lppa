@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu li {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.menu-mobile {
+    display: block;
+    font-size: 22px;
+}
+
+.menu-desktop {
+    display: none;
+}
+
+a {
+    color: #000;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #f15a08;
+}
