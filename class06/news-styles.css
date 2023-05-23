@@ -2,11 +2,11 @@ html {
     font-family: sans-serif;
 }
 
-header {
-    display: flex;
+
+.header {
     padding: 20px;
-    align-items: center;
-    justify-content: space-between;
+    text-align: center;
+    justify-content: space-evenly;
 }
 
 .header-title {
@@ -17,6 +17,13 @@ header {
 
 .date {
     color: dimgray;
+}
+
+.topnav {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 main {
