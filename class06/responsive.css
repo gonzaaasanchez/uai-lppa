@@ -2,7 +2,18 @@
     .menu-desktop {
         display: block;
     }
+
     .menu-mobile {
         display: none;
     }
+
+    .news-highlighted {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .news img {
+        height: auto;
+    }
+
 }

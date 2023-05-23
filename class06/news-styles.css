@@ -1,3 +1,7 @@
+html {
+    font-family: sans-serif;
+}
+
 header {
     display: flex;
     padding: 20px;
@@ -5,9 +9,13 @@ header {
     justify-content: space-between;
 }
 
+main {
+    padding: 0 30px;
+}
+
 .menu li {
     display: inline-block;
-    padding: 0 5px;
+    padding: 0 10px;
 }
 
 .menu-mobile {
@@ -26,4 +34,25 @@ a {
 
 a:hover {
     color: #f15a08;
+}
+
+.news {
+    margin: 25px 0 25px;
+}
+
+.news img {
+    margin-bottom: 15px;
+    height: 300px;
+    max-width: 100%;
+}
+
+.news-highlighted {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: aqua;
+}
+
+.news-highlighted .news {
+    width: 500px;
 }
