@@ -7,7 +7,21 @@
         display: none;
     }
 
+    .news {
+        width: 300px;
+        max-width: 100%;
+    }
+
     .news-highlighted {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .news-highlighted .news {
+        width: 550px;
+    }
+
+    .news-category {
         flex-direction: row;
         justify-content: space-around;
     }

@@ -46,14 +46,13 @@ a:hover {
     max-width: 100%;
 }
 
-
 .news-title {
     margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 
-.news-category {
+.news-category-label {
     background: darkgrey;
     padding: 5px 7px;
     color: white;
@@ -68,9 +67,14 @@ a:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* background-color: aqua; */
 }
 
-.news-highlighted .news {
-    width: 500px;
+.news-category-section {
+    margin-top: 50px;
+}
+
+.news-category {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
