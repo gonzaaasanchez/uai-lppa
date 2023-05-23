@@ -59,6 +59,11 @@ a:hover {
     color: white;
 }
 
+.news-description {
+    margin-top: 10px;
+    color: dimgray;
+}
+
 .news-highlighted {
     display: flex;
     align-items: center;
