@@ -78,3 +78,10 @@ a:hover {
     align-items: center;
     flex-direction: column;
 }
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
