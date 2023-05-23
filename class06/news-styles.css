@@ -46,11 +46,24 @@ a:hover {
     max-width: 100%;
 }
 
+
+.news-title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.news-category {
+    background: darkgrey;
+    padding: 5px 7px;
+    color: white;
+}
+
 .news-highlighted {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .news-highlighted .news {
