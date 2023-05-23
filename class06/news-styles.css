@@ -9,6 +9,16 @@ header {
     justify-content: space-between;
 }
 
+.header-title {
+    color: #f15a08;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.date {
+    color: dimgray;
+}
+
 main {
     padding: 0 30px;
 }
