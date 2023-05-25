@@ -31,3 +31,23 @@
     }
 
 }
+
+@media only screen and (min-width: 1024px) {
+    .main-container {
+        display: flex;
+    }
+
+    .news-container {
+        width: 85%;
+    }
+
+    .advertise {
+        width: 15%;
+        height: max-content;
+    }
+
+    .advertise img {
+        max-width: 100%;
+    }
+
+}
