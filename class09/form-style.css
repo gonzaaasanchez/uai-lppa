@@ -1,0 +1,27 @@
+.news-form-content {
+    padding: 20px 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.form-input-container {
+    padding: 10px 0px;
+}
+
+.form-input {
+    padding: 5px 0px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+
+/* input:invalid {
+    border: 1px solid red;
+}
+
+input:invalid+.error {
+    display: block;
+} */
