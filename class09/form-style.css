@@ -18,10 +18,10 @@
     color: red;
 }
 
-/* input:invalid {
-    border: 1px solid red;
+.button {
+    padding: 12px;
+    background: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
 }
-
-input:invalid+.error {
-    display: block;
-} */
