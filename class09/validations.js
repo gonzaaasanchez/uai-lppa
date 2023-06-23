@@ -1,5 +1,8 @@
 var nameInput = document.getElementById("name");
 nameInput.addEventListener("blur", validateName);
+nameInput.addEventListener("keyup", greeetUser);
+
+var greetTitle = document.getElementById('greet-title');
 
 var emailInput = document.getElementById("email");
 emailInput.addEventListener("blur", validateEmail);
@@ -154,6 +157,13 @@ function validateID() {
     idError.innerText = error;
     return error;
 }
+
+function greeetUser() {
+    var nameValue = nameInput.value;
+    if (nameValue.length) greetTitle.innerText = 'Hola ' + nameValue + '!';
+    else greetTitle.innerText = 'Hola!';
+}
+
 
 function submitForm() {
     const errors = [];
