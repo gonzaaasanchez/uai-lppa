@@ -50,4 +50,9 @@
         max-width: 100%;
     }
 
+    .inputs-main-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 }
