@@ -1,35 +1,66 @@
 var nameInput = document.getElementById("name");
 nameInput.addEventListener("blur", validateName);
 nameInput.addEventListener("keyup", greeetUser);
+nameInput.addEventListener("foc", clearError('name'));
+nameInput.addEventListener('focus', function (event) {
+    clearError('name');
+});
 
 var greetTitle = document.getElementById('greet-title');
 
 var emailInput = document.getElementById("email");
 emailInput.addEventListener("blur", validateEmail);
+emailInput.addEventListener('focus', function (event) {
+    clearError('email');
+});
 
 var passwordInput = document.getElementById("password");
 passwordInput.addEventListener("blur", validatePassword);
+passwordInput.addEventListener('focus', function (event) {
+    clearError('password');
+});
 
 var passwordRepeatInput = document.getElementById("password-repeat");
 passwordRepeatInput.addEventListener("blur", validatePasswordRepeat);
+passwordRepeatInput.addEventListener('focus', function (event) {
+    clearError('passwordRepeat');
+});
 
 var ageInput = document.getElementById("age");
 ageInput.addEventListener("blur", validateAge);
+ageInput.addEventListener('focus', function (event) {
+    clearError('age');
+});
 
 var phoneInput = document.getElementById("phone");
 phoneInput.addEventListener("blur", validatePhone);
+phoneInput.addEventListener('focus', function (event) {
+    clearError('phone');
+});
 
 var addressInput = document.getElementById("address");
 addressInput.addEventListener("blur", validateAddress);
+addressInput.addEventListener('focus', function (event) {
+    clearError('address');
+});
 
 var cityInput = document.getElementById("city");
 cityInput.addEventListener("blur", validateCity);
+cityInput.addEventListener('focus', function (event) {
+    clearError('city');
+});
 
 var postcodeInput = document.getElementById("postcode");
 postcodeInput.addEventListener("blur", validatePostcode);
+postcodeInput.addEventListener('focus', function (event) {
+    clearError('postcode');
+});
 
 var idInput = document.getElementById("id");
 idInput.addEventListener("blur", validateID);
+idInput.addEventListener('focus', function (event) {
+    clearError('id');
+});
 
 function validateName() {
     var nameValue = nameInput.value;
@@ -164,6 +195,9 @@ function greeetUser() {
     else greetTitle.innerText = 'Hola!';
 }
 
+function clearError(id) {
+    document.getElementById(id + 'Error').innerText = "";
+}
 
 function submitForm() {
     const errors = [];
