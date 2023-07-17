@@ -243,9 +243,71 @@ function submitForm() {
     else success.push('Campo DNI: ' + idInput.value);
 
     if (errors.length) {
+        localStorage.clear();
         alert('El formulario tiene los siguientes errores:\n\n' + errors.join('\n'));
     } else {
         console.log('Successss');
-        alert('El formulario fue completado con los siguientes valores:\n\n' + success.join('\n'));
+
+        localStorage.setItem("name", nameInput.value);
+        localStorage.setItem("email", emailInput.value);
+        localStorage.setItem("age", ageInput.value);
+        localStorage.setItem("phone", phoneInput.value);
+        localStorage.setItem("address", addressInput.value);
+        localStorage.setItem("city", cityInput.value);
+        localStorage.setItem("postcode", postcodeInput.value);
+        localStorage.setItem("email", emailInput.value);
+        localStorage.setItem("id", idInput.value);
+
+        alert('El formulario fue enviado y guardado con los siguientes valores:\n\n' + success.join('\n'));
     }
 }
+
+window.onload = function () {
+    const nameInput = document.getElementById("name");
+    const storedName = localStorage.getItem("name");
+    if (storedName) {
+        nameInput.value = storedName;
+    }
+
+    const emailInput = document.getElementById("email");
+    const storedEmail = localStorage.getItem("email");
+    if (storedEmail) {
+        emailInput.value = storedEmail;
+    }
+
+    const ageInput = document.getElementById("age");
+    const storedAge = localStorage.getItem("age");
+    if (storedAge) {
+        ageInput.value = storedAge;
+    }
+
+    const phoneInput = document.getElementById("phone");
+    const storedPhone = localStorage.getItem("phone");
+    if (storedPhone) {
+        phoneInput.value = storedPhone;
+    }
+
+    const addressInput = document.getElementById("address");
+    const storedAddress = localStorage.getItem("address");
+    if (storedAddress) {
+        addressInput.value = storedAddress;
+    }
+
+    const cityInput = document.getElementById("city");
+    const storedCity = localStorage.getItem("city");
+    if (storedCity) {
+        cityInput.value = storedCity;
+    }
+
+    const postcodeInput = document.getElementById("postcode");
+    const storedPostcode = localStorage.getItem("postcode");
+    if (storedPostcode) {
+        postcodeInput.value = storedPostcode;
+    }
+
+    const idInput = document.getElementById("id");
+    const storedId = localStorage.getItem("id");
+    if (storedId) {
+        idInput.value = storedId;
+    }
+};
