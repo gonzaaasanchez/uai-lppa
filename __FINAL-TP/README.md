@@ -1,7 +1,7 @@
 Requisitos
 1) Conocer el juego: reglas
     a) Investigar sobre el juego
-    b) uestra versión y adaptación: qué vamos a hacer
+    b) Nuestra versión y adaptación: qué vamos a hacer
         - 1 solo jugador
         - Niveles infinitos (no para nunca de sumar pasos, siempre y cuando sea correcto)
         - Tiempo (el tiempo máximo que me da para seguir la secuencia -no comtemplarlo, en principio-)
