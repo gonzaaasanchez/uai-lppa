@@ -15,12 +15,16 @@ footer {
 h1 {
   font-size: 36px;
   margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 h2 {
   font-size: 20px;
   font-weight: normal;
   margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 h3 {
@@ -42,14 +46,14 @@ h3 {
   border-radius: 50%;
   background-color: #fff5eb;
   border: 12px solid black;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   position: relative;
 }
 
 .game-button {
-  width: 115px;
-  height: 115px;
+  width: 100px;
+  height: 100px;
   cursor: pointer;
   border: 5px solid black;
   border-radius: 50%;
@@ -59,29 +63,29 @@ h3 {
 
 #green {
   background-color: green;
-  top: 65px;
-  left: 65px;
+  top: 60px;
+  left: 60px;
 
 }
 
 #red {
   background-color: red;
-  top: 65px;
-  right: 65px;
+  top: 60px;
+  right: 60px;
 
 }
 
 #blue {
   background-color: blue;
-  bottom: 65px;
-  left: 65px;
+  bottom: 60px;
+  left: 60px;
 
 }
 
 #yellow {
   background-color: yellow;
-  bottom: 65px;
-  right: 65px;
+  bottom: 60px;
+  right: 60px;
 }
 
 .start-button {
