@@ -47,7 +47,7 @@ h3 {
   position: relative;
 }
 
-.button {
+.game-button {
   width: 115px;
   height: 115px;
   cursor: pointer;
@@ -55,6 +55,7 @@ h3 {
   border-radius: 50%;
   position: absolute;
 }
+
 
 #green {
   background-color: green;
@@ -83,6 +84,22 @@ h3 {
   right: 65px;
 }
 
+.start-button {
+  background: white;
+  color: #000;
+  width: 100px;
+  margin-bottom: 40px;
+  border: 2px;
+  padding: 10px;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.start-button:hover {
+  background: lightblue;
+}
+
 /* instructions */
 
 .instructions {
@@ -100,11 +117,22 @@ h3 {
   font-size: 14px;
 }
 
+/* state */
+
+.state {
+  font-size: 15;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* score */
+
 .score {
   font-size: 24px;
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
 
 /* responsive */
 
