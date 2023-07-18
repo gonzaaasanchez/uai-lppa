@@ -7,5 +7,6 @@
 - Class 08
 - Class 09
 - Class 10
+- Final TP: Simon Game
 
 
