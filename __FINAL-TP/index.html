@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simon Game</title>
+  <title>Simon Game: TP Final</title>
+  <script src="script.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" type="text/css" href="reset.css">
 </head>
+
 <body>
-  <h1>Juego Simón</h1>
-  
-  <div class="game-device">
-    <div class="button" id="green"></div>
-    <div class="button" id="red"></div>
-    <div class="button" id="blue"></div>
-    <div class="button" id="yellow"></div>
-  </div>
-  
-  <div id="score">Nivel actual: 0</div>
-  
-  <script src="script.js"></script>
+
+  <section class="game-content">
+
+    <h1>Juego Simón</h1>
+    <h2>Lenguajes de Programación para la Administración: TP Final </h2>
+
+    <div class="game-device">
+      <div class="button" id="green"></div>
+      <div class="button" id="red"></div>
+      <div class="button" id="blue"></div>
+      <div class="button" id="yellow"></div>
+    </div>
+
+    <div class="score">Nivel actual: 0</div>
+
+  </section>
+
+
+  <section class="instructions">
+    <h3>Reglas de juego:</h3>
+    <p>El juego consiste en memorizar una secuencia de colores que se muestran en pantalla y luego ingresarlas en el
+      mismo orden. Se avanza en
+      niveles, donde cada nivel se corresponde con la cantidad de colores de la secuencia a memorizar. Cada aumento de
+      nivel repite la secuencia anterior y agrega un color nuevo. Se avanza de niveles mientras se ingrese la secuencia
+      en el orden correcto y se pierde el juego cuando no se respete el orden. El nivel en el que se pierde es la
+      puntuación maxima alcanzada.</p>
+    <p>1) Presioná 'Iniciar' para comenzar un nuevo juego.</p>
+    <p>2) Se te va a mostrar la secuencia correspondiente al nivel. Memorizala.</p>
+    <p>3) Esperá la orden para ingresarla en el orden correcto</p>
+    <p>4) A jugar!</p>
+  </section>
+
+
+  <footer>
+    © 2023 Sanchez Palomino, Marcos Gonzalo
+  </footer>
+
 </body>
+
 </html>
