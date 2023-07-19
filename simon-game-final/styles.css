@@ -2,10 +2,11 @@
 
 html {
   font-family: "Retro Gaming";
+  background-color: #1f1f1f;
+  color:  white;
 }
 
 /* main content */
-
 
 body {
   display: flex;
@@ -29,7 +30,8 @@ h1 {
 
 h2 {
   font-size: 20px;
-  font-weight: normal;
+  font-weight: lighter;
+  color: white;
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
@@ -52,7 +54,7 @@ h3 {
   flex-wrap: wrap;
   margin-top: 50px;
   border-radius: 50%;
-  background-color: #fff5eb;
+  background-color: #1f1f1f;
   border: 12px solid black;
   width: 350px;
   height: 350px;
@@ -66,6 +68,7 @@ h3 {
   border: 5px solid black;
   border-radius: 50%;
   position: absolute;
+  cursor: pointer;
 }
 
 
@@ -98,16 +101,16 @@ h3 {
 
 .start-button {
   font-family: "Retro Gaming";
-  background: white;
-  color: #000;
+  background: #1f1f1f;
+  color: white;
   width: 200px;
   margin-top: 40px;
   margin-bottom: 40px;
-  border: 2px;
   padding: 10px;
   cursor: pointer;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 3px;
+  border-color: white;
 }
 
 .start-button:hover {
@@ -125,7 +128,7 @@ h3 {
 .instructions {
   padding: 20px;
   position: initial;
-  border: 2px solid black;
+  border: 1px solid white;
   border-radius: 4px;
   margin-left: 40px;
   margin-right: 40px;
@@ -141,8 +144,8 @@ h3 {
 /* state */
 
 .state {
-  font-size: 15;
-  margin-top: 10px;
+  font-size: 12px;
+  margin-top: 12px;
   margin-bottom: 10px;
 }
 
@@ -152,8 +155,7 @@ h3 {
   font-size: 24px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #03af57;
-  color: white;
+  color: #4dff00;
   padding: 5px 15px 5px 15px;
   border-radius: 3px;
 }
@@ -169,5 +171,6 @@ h3 {
     margin-right: 0px;
     position: absolute;
     width: 200px;
+    text-align: left;
   }
 }

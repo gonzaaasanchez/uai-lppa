@@ -9,7 +9,7 @@ var showingLevelSecuence = false;
 function newGame() {
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
-        setStartButton('(Juego en curso)');
+        setStartButton('JUEGO EN CURSO');
         // TODO audio not played inside Timeout
         // setTimeout(() => {
         createLevel();
@@ -30,7 +30,7 @@ function playAudio(color) {
 
 function showLevelSequence(colorIndex) {
     showingLevelSecuence = true;
-    setGameState('Mostrando secuencia');
+    setGameState('MOSTRANDO SECUENCIA');
     buttonPressed(sequence[colorIndex]);
     setTimeout(() => {
         buttonDefault(sequence[colorIndex]);
@@ -41,7 +41,7 @@ function showLevelSequence(colorIndex) {
             }, 500);
         } else {
             showingLevelSecuence = false;
-            setGameState('Ingresá la secuencia');
+            setGameState('INGRESÁ LA SECUENCIA');
         }
     }, 1000);
 }
@@ -62,7 +62,7 @@ function colorClicked(color) {
             if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
                 showPoints();
                 if (sequenceEntered.length == sequence.length) {
-                    setGameState('Correcto! Atento a la próxima secuencia');
+                    setGameState('CORRECTO! MIRÁ LA NUEVA SECUENCIA');
                     setTimeout(() => {
                         createLevel();
                     }, 3000);
@@ -91,19 +91,19 @@ function clearGame() {
     currentPoints = 0;
     sequence = [];
     clearSequenceEntered();
-    document.getElementById('score').innerText = 'Puntos: 0'
+    document.getElementById('score').innerText = 'PUNTOS: 0'
 }
 
 function gameLost() {
     clearGame();
-    setGameState('Juego no iniciado');
-    setStartButton('Iniciar nuevo juego');
+    setGameState('JUEGO NO INICIADO');
+    setStartButton('INICIAR NUEVO JUEGO');
 }
 
 
 function showPoints() {
     currentPoints += 1;
-    document.getElementById('score').innerText = 'Puntos: ' + currentPoints
+    document.getElementById('score').innerText = 'PUNTOS: ' + currentPoints
 }
 
 function clearSequenceEntered() {
