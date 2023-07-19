@@ -73,28 +73,28 @@ h3 {
 
 
 #green {
-  background-color: green;
+  background-color: darkgreen;
   top: 60px;
   left: 60px;
 
 }
 
 #red {
-  background-color: red;
+  background-color: darkred;
   top: 60px;
   right: 60px;
 
 }
 
 #blue {
-  background-color: blue;
+  background-color: darkblue;
   bottom: 60px;
   left: 60px;
 
 }
 
 #yellow {
-  background-color: yellow;
+  background-color: goldenrod;
   bottom: 60px;
   right: 60px;
 }

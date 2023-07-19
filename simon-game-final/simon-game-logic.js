@@ -33,7 +33,6 @@ function showLevelSequence(colorIndex) {
     setGameState('MOSTRANDO SECUENCIA');
     buttonPressed(sequence[colorIndex]);
     setTimeout(() => {
-        buttonDefault(sequence[colorIndex]);
         var nextColorIndex = colorIndex + 1
         if (nextColorIndex < sequence.length) {
             setTimeout(() => {
@@ -55,17 +54,14 @@ function colorClicked(color) {
 
             var currentColorIndex = sequenceEntered.length - 1
             buttonPressed(color);
-            setTimeout(() => {
-                buttonDefault(color);
-            }, 250);
 
             if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
                 showPoints();
                 if (sequenceEntered.length == sequence.length) {
-                    setGameState('CORRECTO! MIRÁ LA NUEVA SECUENCIA');
+                    setGameState('CORRECTO!');
                     setTimeout(() => {
                         createLevel();
-                    }, 3000);
+                    }, 2000);
                 }
             } else {
                 // TODO mostrar modal
@@ -78,11 +74,40 @@ function colorClicked(color) {
 
 function buttonPressed(button) {
     playAudio(button);
-    document.getElementById(button).style.opacity = 0.5
+    switch (button) {
+        case 'red':
+            document.getElementById(button).style.background = "tomato";
+            break;
+        case 'blue':
+            document.getElementById(button).style.background = "lightskyblue";
+            break;
+        case 'green':
+            document.getElementById(button).style.background = "lightgreen";
+            break;
+        case 'yellow':
+            document.getElementById(button).style.background = "yellow";
+            break;
+    };
+    setTimeout(() => {
+        buttonDefault(button);
+    }, 250);
 }
 
 function buttonDefault(button) {
-    document.getElementById(button).style.opacity = 1
+    switch (button) {
+        case 'red':
+            document.getElementById(button).style.background = "darkRed";
+            break;
+        case 'blue':
+            document.getElementById(button).style.background = "darkBlue";
+            break;
+        case 'green':
+            document.getElementById(button).style.background = "darkGreen";
+            break;
+        case 'yellow':
+            document.getElementById(button).style.background = "goldenrod";
+            break;
+    };
 }
 
 function clearGame() {
