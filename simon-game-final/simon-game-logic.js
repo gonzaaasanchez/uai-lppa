@@ -2,20 +2,22 @@ var gameColors = ['green', 'red', 'blue', 'yellow'];
 var sequence = [];
 var sequenceEntered = [];
 var currentLevel = 0;
+var currentPoints = 0;
 var gameStarted = false;
 var showingLevelSecuence = false;
 
 function newGame() {
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
-        clearSequenceEntered();
-        clearLevel();
-        createNextLevel();
         setStartButton('(Juego en curso)');
+        // TODO audio not played inside Timeout
+        // setTimeout(() => {
+        createLevel();
+        // }, 1000);
     }
 }
 
-function createNextLevel() {
+function createLevel() {
     const randomColor = gameColors[Math.floor(Math.random() * gameColors.length)];
     sequence.push(randomColor);
     clearSequenceEntered();
@@ -24,21 +26,20 @@ function createNextLevel() {
 }
 
 function playAudio(color) {
-    var audio = document.getElementById(color + "-sound");
-    audio.play();
+    document.getElementById(color + "-sound").play();
 }
 
 function showLevelSequence(colorIndex) {
     showingLevelSecuence = true;
     setGameState('Mostrando secuencia');
-    buttonSimulatePressed(sequence[colorIndex]);
+    buttonPressed(sequence[colorIndex]);
     setTimeout(() => {
         buttonDefault(sequence[colorIndex]);
         var nextColorIndex = colorIndex + 1
         if (nextColorIndex < sequence.length) {
             setTimeout(() => {
                 showLevelSequence(nextColorIndex)
-            }, 1000);
+            }, 500);
         } else {
             showingLevelSecuence = false;
             setGameState('Ingresá la secuencia');
@@ -52,30 +53,31 @@ function colorClicked(color) {
         sequenceEntered.push(color);
 
         if (sequenceEntered.length <= sequence.length) {
-            var currentColorIndex = sequenceEntered.length - 1
 
-            buttonSimulatePressed(color);
+            var currentColorIndex = sequenceEntered.length - 1
+            buttonPressed(color);
             setTimeout(() => {
                 buttonDefault(color);
             }, 250);
 
             if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
+                showPoints();
                 if (sequenceEntered.length == sequence.length) {
                     setGameState('Correcto! Atento a la próxima secuencia');
                     setTimeout(() => {
-                        createNextLevel();
+                        createLevel();
                     }, 3000);
                 }
             } else {
                 // TODO mostrar modal
-                alert('Ingresaste un color incorrecto! Perdiste :(');
+                alert('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
                 gameLost();
             }
         }
     }
 }
 
-function buttonSimulatePressed(button) {
+function buttonPressed(button) {
     playAudio(button);
     document.getElementById(button).style.opacity = 0.5
 }
@@ -84,15 +86,30 @@ function buttonDefault(button) {
     document.getElementById(button).style.opacity = 1
 }
 
-function clearLevel() {
+function clearGame() {
+    gameStarted = false;
     currentLevel = 0
+    currentPoints = 0;
     sequence = [];
-    document.getElementById('score').innerText = 'Nivel: ' + currentLevel
+    clearSequenceEntered();
+    document.getElementById('level').innerText = 'Nivel: 0'
+    document.getElementById('score').innerText = 'Puntos: 0'
+}
+
+function gameLost() {
+    clearGame();
+    setGameState('Juego no iniciado');
+    setStartButton('Iniciar nuevo juego');
 }
 
 function showLevel() {
     currentLevel += 1;
-    document.getElementById('score').innerText = 'Nivel: ' + currentLevel
+    document.getElementById('level').innerText = 'Nivel: ' + currentLevel
+}
+
+function showPoints() {
+    currentPoints += 1;
+    document.getElementById('score').innerText = 'Puntos: ' + currentPoints
 }
 
 function clearSequenceEntered() {
@@ -105,11 +122,4 @@ function setGameState(newState) {
 
 function setStartButton(title) {
     document.getElementById('start-button').innerText = title;
-}
-
-function gameLost() {
-    gameStarted = false;
-    setGameState('Juego finalizado');
-    document.getElementById('score').innerText = 'Nivel alcanzado: ' + currentLevel
-    setStartButton('Jugar de nuevo');
 }
