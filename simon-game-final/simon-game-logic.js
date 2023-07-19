@@ -23,6 +23,11 @@ function createNextLevel() {
     showLevelSequence(0);
 }
 
+function playAudio(color) {
+    var audio = document.getElementById(color + "-sound");
+    audio.play();
+}
+
 function showLevelSequence(colorIndex) {
     showingLevelSecuence = true;
     setGameState('Mostrando secuencia');
@@ -71,6 +76,7 @@ function colorClicked(color) {
 }
 
 function buttonSimulatePressed(button) {
+    playAudio(button);
     document.getElementById(button).style.opacity = 0.5
 }
 

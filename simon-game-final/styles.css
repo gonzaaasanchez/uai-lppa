@@ -105,6 +105,12 @@ h3 {
   background: lightblue;
 }
 
+/* sounds div */
+
+.sounds {
+  display: none;
+}
+
 /* instructions */
 
 .instructions {
