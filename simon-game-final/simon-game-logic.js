@@ -21,7 +21,6 @@ function createLevel() {
     const randomColor = gameColors[Math.floor(Math.random() * gameColors.length)];
     sequence.push(randomColor);
     clearSequenceEntered();
-    showLevel();
     showLevelSequence(0);
 }
 
@@ -92,7 +91,6 @@ function clearGame() {
     currentPoints = 0;
     sequence = [];
     clearSequenceEntered();
-    document.getElementById('level').innerText = 'Nivel: 0'
     document.getElementById('score').innerText = 'Puntos: 0'
 }
 
@@ -102,10 +100,6 @@ function gameLost() {
     setStartButton('Iniciar nuevo juego');
 }
 
-function showLevel() {
-    currentLevel += 1;
-    document.getElementById('level').innerText = 'Nivel: ' + currentLevel
-}
 
 function showPoints() {
     currentPoints += 1;
