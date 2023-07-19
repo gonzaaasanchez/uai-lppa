@@ -11,7 +11,7 @@ function newGame() {
         clearSequenceEntered();
         clearLevel();
         createNextLevel();
-        setStartButton("(Juego en curso)");
+        setStartButton('(Juego en curso)');
     }
 }
 
@@ -62,6 +62,7 @@ function colorClicked(color) {
                     }, 3000);
                 }
             } else {
+                // TODO mostrar modal
                 alert('Ingresaste un color incorrecto! Perdiste :(');
                 gameLost();
             }
@@ -102,7 +103,7 @@ function setStartButton(title) {
 
 function gameLost() {
     gameStarted = false;
-    setGameState("Juego finalizado");
+    setGameState('Juego finalizado');
     document.getElementById('score').innerText = 'Nivel alcanzado: ' + currentLevel
-    setStartButton("Jugar de nuevo");
+    setStartButton('Jugar de nuevo');
 }
