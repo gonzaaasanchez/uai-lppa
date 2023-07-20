@@ -3,12 +3,30 @@
 /* constants */
 
 :root {
+
+  /* desktop */
+  
   /* button size must be half size of device */
   --device-size: 450px;
   --device-button-size: 225px;
 
+  --device-display-height: 100px;
+  --device-display-width: 200px;
+  --device-display-top: 170px;
+  /* (--device-size / 2 ) - (--device-display-height / 2) */
+  --device-display-left: 125px;
+  /* (--device-size / 2 ) - (--device-display-width / 2) */
+
+  /* mobile */
+
   --device-size-mobile: 300px;
   --device-button-size-mobile: 150px;
+
+  --device-display-height-mobile: 100px;
+  --device-display-width-mobile: 200px;
+  --device-display-top-mobile: 100px;
+  --device-display-left-mobile: 50px;
+
 }
 
 /* main content */
@@ -55,7 +73,7 @@ h3 {
 
 /* device */
 
-.game-content {
+.game-main-content {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -64,6 +82,7 @@ h3 {
 .game-device {
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   margin-top: 30px;
   border-radius: 50%;
@@ -72,6 +91,23 @@ h3 {
   border: 20px solid black;
   width: var(--device-size-mobile);
   height: var(--device-size-mobile);
+}
+
+.game-display {
+  position: absolute;
+  background: #1f1f1f;
+  height: var(--device-display-height-mobile);
+  width: var(--device-display-width-mobile);
+
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 40px 8px 8px 8px;
+  border-color: black;
+  box-sizing: border-box;
+
+  /* position relative to parent */
+  top: var(--device-display-top-mobile);
+  left: var(--device-display-left-mobile);
 }
 
 .game-button {
@@ -180,7 +216,7 @@ h3 {
     width: 200px;
     text-align: left;
   }
-  
+
 }
 
 @media screen and (min-width: 900px) {
@@ -189,10 +225,18 @@ h3 {
     width: var(--device-size);
     height: var(--device-size);
   }
-  
+
   .game-button {
     width: var(--device-button-size);
     height: var(--device-button-size);
+  }
+
+  .game-display {
+    height: var(--device-display-height);
+    width: var(--device-display-width);
+  
+    top: var(--device-display-top);
+    left: var(--device-display-left);
   }
 
 }
