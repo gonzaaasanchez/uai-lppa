@@ -71,7 +71,7 @@ var showingLevelSecuence = false;
 function newGame() {
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
-        setStartButton('JUEGO EN CURSO');
+        setStartButton('EN CURSO');
         // audio not played and showing error inside setTimeout -> FIX
         // setTimeout(() => {
         createLevel();
@@ -184,7 +184,7 @@ function clearGame() {
 function gameLost() {
     clearGame();
     setGameState(PlayingStatus.notStarted);
-    setStartButton('INICIAR NUEVO JUEGO');
+    setStartButton('INICIAR');
 }
 
 

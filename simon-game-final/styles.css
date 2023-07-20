@@ -83,7 +83,6 @@ h3 {
   display: flex;
   flex-direction: column;
   position: relative;
-  align-items: center;
   margin-top: 30px;
   border-radius: 50%;
   background-color: #1f1f1f;
@@ -95,19 +94,28 @@ h3 {
 
 .game-display {
   position: absolute;
-  background: #1f1f1f;
+  background: black;
   height: var(--device-display-height-mobile);
   width: var(--device-display-width-mobile);
 
   border-radius: 5px;
-  border-style: solid;
-  border-width: 40px 8px 8px 8px;
   border-color: black;
   box-sizing: border-box;
 
   /* position relative to parent */
   top: var(--device-display-top-mobile);
   left: var(--device-display-left-mobile);
+}
+
+.game-display-details {
+  border-radius: 3px;
+  position: absolute;
+  background: #1f1f1f;
+  margin: 0px 8px 8px 8px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 3px 0px 7px 0px;
 }
 
 .game-button {
@@ -144,35 +152,25 @@ h3 {
 
 .start-button {
   font-family: "Retro Gaming";
-  background: #1f1f1f;
   color: white;
-  width: 200px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding: 10px;
   cursor: pointer;
-  border: 1px solid black;
-  border-radius: 3px;
-  border-color: white;
-}
-
-.start-button:hover {
-  background: lightblue;
+  background-color: transparent;
+  margin-top: 12px;
 }
 
 /* state */
 
 .state {
   font-size: 10px;
-  margin-top: 7px;
+  margin-top: 8px;
   color: beige;
 }
 
 /* score */
 
 .score {
-  font-size: 16px;
-  margin-top: 6px;
+  font-size: 14px;
+  margin-top: 8px;
   color: #4dff00;
   border-radius: 3px;
 }
@@ -190,8 +188,7 @@ h3 {
   position: initial;
   border: 1px solid white;
   border-radius: 4px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 40px;
   width: fit-content;
 }
 
