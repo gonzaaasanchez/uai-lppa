@@ -132,8 +132,8 @@ function colorClicked(color) {
                 }
             } else {
                 // TODO mostrar modal
-                alert('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
                 gameLost();
+                alert('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
             }
         }
     }
