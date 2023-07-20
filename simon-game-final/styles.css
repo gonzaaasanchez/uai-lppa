@@ -4,8 +4,11 @@
 
 :root {
   /* button size must be half size of device */
-  --device-size: 350px;
-  --device-button-size: 175px;
+  --device-size: 400px;
+  --device-button-size: 200px;
+
+  --device-size-mobile: 240px;
+  --device-button-size-mobile: 120px;
 }
 
 /* main content */
@@ -67,13 +70,13 @@ h3 {
   background-color: #1f1f1f;
   box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.1);
   border: 20px solid black;
-  width: var(--device-size);
-  height: var(--device-size);
+  width: var(--device-size-mobile);
+  height: var(--device-size-mobile);
 }
 
 .game-button {
-  width: var(--device-button-size);
-  height: var(--device-button-size);
+  width: var(--device-button-size-mobile);
+  height: var(--device-button-size-mobile);
   cursor: pointer;
   border: 10px solid black;
   box-sizing: border-box;
@@ -177,4 +180,19 @@ h3 {
     width: 200px;
     text-align: left;
   }
+  
+}
+
+@media screen and (min-width: 900px) {
+
+  .game-device {
+    width: var(--device-size);
+    height: var(--device-size);
+  }
+  
+  .game-button {
+    width: var(--device-button-size);
+    height: var(--device-button-size);
+  }
+
 }
