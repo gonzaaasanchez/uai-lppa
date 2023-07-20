@@ -6,6 +6,13 @@ var currentPoints = 0;
 var gameStarted = false;
 var showingLevelSecuence = false;
 
+const PlayingStatus = {
+    notStarted: 'JUEGO NO INICIADO',
+    sequenceShowing: 'MOSTRANDO SECUENCIA',
+    sequenceWaiting: 'INGRESÁ LA SECUENCIA',
+    sequenceCorrect: '¡CORRECTO!',
+};
+
 function newGame() {
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
@@ -30,7 +37,7 @@ function playAudio(color) {
 
 function showLevelSequence(colorIndex) {
     showingLevelSecuence = true;
-    setGameState('MOSTRANDO SECUENCIA');
+    setGameState(PlayingStatus.sequenceShowing);
     buttonPressed(sequence[colorIndex]);
     setTimeout(() => {
         var nextColorIndex = colorIndex + 1
@@ -40,7 +47,7 @@ function showLevelSequence(colorIndex) {
             }, 500);
         } else {
             showingLevelSecuence = false;
-            setGameState('INGRESÁ LA SECUENCIA');
+            setGameState(PlayingStatus.sequenceWaiting);
         }
     }, 1000);
 }
@@ -49,16 +56,16 @@ function colorClicked(color) {
     if (!showingLevelSecuence) {
 
         sequenceEntered.push(color);
+        buttonPressed(color);
 
         if (sequenceEntered.length <= sequence.length) {
 
             var currentColorIndex = sequenceEntered.length - 1
-            buttonPressed(color);
 
             if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
                 showPoints();
                 if (sequenceEntered.length == sequence.length) {
-                    setGameState('CORRECTO!');
+                    setGameState(PlayingStatus.sequenceCorrect);
                     setTimeout(() => {
                         createLevel();
                     }, 2000);
@@ -73,7 +80,6 @@ function colorClicked(color) {
 }
 
 function buttonPressed(button) {
-    playAudio(button);
     switch (button) {
         case 'red':
             document.getElementById(button).style.background = "tomato";
@@ -88,6 +94,7 @@ function buttonPressed(button) {
             document.getElementById(button).style.background = "yellow";
             break;
     };
+    playAudio(button);
     setTimeout(() => {
         buttonDefault(button);
     }, 250);
@@ -121,7 +128,7 @@ function clearGame() {
 
 function gameLost() {
     clearGame();
-    setGameState('JUEGO NO INICIADO');
+    setGameState(PlayingStatus.notStarted);
     setStartButton('INICIAR NUEVO JUEGO');
 }
 
@@ -136,6 +143,20 @@ function clearSequenceEntered() {
 }
 
 function setGameState(newState) {
+    switch (newState) {
+        case PlayingStatus.notStarted:
+            document.getElementById('state').style.color = 'white';
+            break;
+        case PlayingStatus.sequenceShowing:
+            document.getElementById('state').style.color = 'yellow';
+            break;
+        case PlayingStatus.sequenceWaiting:
+            document.getElementById('state').style.color = 'tomato';
+            break;
+        case PlayingStatus.sequenceCorrect:
+            document.getElementById('state').style.color = 'lightgreen';
+            break;
+    }
     document.getElementById('state').innerText = newState;
 }
 
