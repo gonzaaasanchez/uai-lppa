@@ -1,3 +1,46 @@
+// html objects
+
+var buttonStart = document.getElementById('start-button');
+
+var buttonGreen = document.getElementById('green');
+var buttonRed = document.getElementById('red');
+var buttonBlue = document.getElementById('blue');
+var buttonYellow = document.getElementById('yellow');
+
+var labelScore = document.getElementById('score');
+var labelState = document.getElementById('state');
+
+// listeners
+buttonStart.addEventListener('click', function () {
+    newGame();
+});
+
+buttonGreen.addEventListener('click', function () {
+    if (gameStarted) {
+        colorClicked('green');
+    }
+});
+
+buttonRed.addEventListener('click', function () {
+    if (gameStarted) {
+        colorClicked('red');
+    }
+});
+
+buttonBlue.addEventListener('click', function () {
+    if (gameStarted) {
+        colorClicked('blue');
+    }
+});
+
+buttonYellow.addEventListener('click', function () {
+    if (gameStarted) {
+        colorClicked('yellow');
+    }
+});
+
+// variables
+
 var gameColors = ['green', 'red', 'blue', 'yellow'];
 var sequence = [];
 var sequenceEntered = [];
@@ -13,11 +56,20 @@ const PlayingStatus = {
     sequenceCorrect: '¡CORRECTO!',
 };
 
+const GameColors = {
+    green: 'green',
+    red: 'red',
+    blue: 'blue',
+    yellow: 'yellow',
+};
+
+// functions
+
 function newGame() {
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
         setStartButton('JUEGO EN CURSO');
-        // TODO audio not played inside Timeout
+        // audio not played and showing error inside setTimeout -> FIX
         // setTimeout(() => {
         createLevel();
         // }, 1000);
@@ -82,16 +134,16 @@ function colorClicked(color) {
 function buttonPressed(button) {
     switch (button) {
         case 'red':
-            document.getElementById(button).style.background = "tomato";
+            buttonRed.style.background = "tomato";
             break;
         case 'blue':
-            document.getElementById(button).style.background = "lightskyblue";
+            buttonBlue.style.background = "lightskyblue";
             break;
         case 'green':
-            document.getElementById(button).style.background = "lightgreen";
+            buttonGreen.style.background = "lightgreen";
             break;
         case 'yellow':
-            document.getElementById(button).style.background = "yellow";
+            buttonYellow.style.background = "yellow";
             break;
     };
     playAudio(button);
@@ -103,16 +155,16 @@ function buttonPressed(button) {
 function buttonDefault(button) {
     switch (button) {
         case 'red':
-            document.getElementById(button).style.background = "darkRed";
+            buttonRed.style.background = "darkRed";
             break;
         case 'blue':
-            document.getElementById(button).style.background = "darkBlue";
+            buttonBlue.style.background = "darkBlue";
             break;
         case 'green':
-            document.getElementById(button).style.background = "darkGreen";
+            buttonGreen.style.background = "darkGreen";
             break;
         case 'yellow':
-            document.getElementById(button).style.background = "goldenrod";
+            buttonYellow.style.background = "goldenrod";
             break;
     };
 }
@@ -123,7 +175,7 @@ function clearGame() {
     currentPoints = 0;
     sequence = [];
     clearSequenceEntered();
-    document.getElementById('score').innerText = 'PUNTOS: 0'
+    labelScore.innerText = 'PUNTOS: 0'
 }
 
 function gameLost() {
@@ -135,7 +187,7 @@ function gameLost() {
 
 function showPoints() {
     currentPoints += 1;
-    document.getElementById('score').innerText = 'PUNTOS: ' + currentPoints
+    labelScore.innerText = 'PUNTOS: ' + currentPoints
 }
 
 function clearSequenceEntered() {
@@ -143,23 +195,23 @@ function clearSequenceEntered() {
 }
 
 function setGameState(newState) {
+    labelState.innerText = newState;
     switch (newState) {
         case PlayingStatus.notStarted:
-            document.getElementById('state').style.color = 'white';
+            labelState.style.color = 'white';
             break;
         case PlayingStatus.sequenceShowing:
-            document.getElementById('state').style.color = 'yellow';
+            labelState.style.color = 'yellow';
             break;
         case PlayingStatus.sequenceWaiting:
-            document.getElementById('state').style.color = 'tomato';
+            labelState.style.color = 'tomato';
             break;
         case PlayingStatus.sequenceCorrect:
-            document.getElementById('state').style.color = 'lightgreen';
+            labelState.style.color = 'lightgreen';
             break;
     }
-    document.getElementById('state').innerText = newState;
 }
 
 function setStartButton(title) {
-    document.getElementById('start-button').innerText = title;
+    buttonStart.innerText = title;
 }
