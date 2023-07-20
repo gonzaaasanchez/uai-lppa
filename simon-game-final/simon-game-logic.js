@@ -11,43 +11,36 @@ var labelScore = document.getElementById('score');
 var labelState = document.getElementById('state');
 
 // listeners
+
 buttonStart.addEventListener('click', function () {
     newGame();
 });
 
 buttonGreen.addEventListener('click', function () {
     if (gameStarted) {
-        colorClicked('green');
+        colorClicked(GameColors.green);
     }
 });
 
 buttonRed.addEventListener('click', function () {
     if (gameStarted) {
-        colorClicked('red');
+        colorClicked(GameColors.red);
     }
 });
 
 buttonBlue.addEventListener('click', function () {
     if (gameStarted) {
-        colorClicked('blue');
+        colorClicked(GameColors.blue);
     }
 });
 
 buttonYellow.addEventListener('click', function () {
     if (gameStarted) {
-        colorClicked('yellow');
+        colorClicked(GameColors.yellow);
     }
 });
 
-// variables
-
-var gameColors = ['green', 'red', 'blue', 'yellow'];
-var sequence = [];
-var sequenceEntered = [];
-var currentLevel = 0;
-var currentPoints = 0;
-var gameStarted = false;
-var showingLevelSecuence = false;
+// const
 
 const PlayingStatus = {
     notStarted: 'JUEGO NO INICIADO',
@@ -62,6 +55,16 @@ const GameColors = {
     blue: 'blue',
     yellow: 'yellow',
 };
+
+// variables
+
+var gameColors = [GameColors.green, GameColors.red, GameColors.blue, GameColors.yellow];
+var sequence = [];
+var sequenceEntered = [];
+var currentLevel = 0;
+var currentPoints = 0;
+var gameStarted = false;
+var showingLevelSecuence = false;
 
 // functions
 
@@ -133,16 +136,16 @@ function colorClicked(color) {
 
 function buttonPressed(button) {
     switch (button) {
-        case 'red':
+        case GameColors.red:
             buttonRed.style.background = "tomato";
             break;
-        case 'blue':
+        case GameColors.blue:
             buttonBlue.style.background = "lightskyblue";
             break;
-        case 'green':
+        case GameColors.green:
             buttonGreen.style.background = "lightgreen";
             break;
-        case 'yellow':
+        case GameColors.yellow:
             buttonYellow.style.background = "yellow";
             break;
     };
@@ -154,16 +157,16 @@ function buttonPressed(button) {
 
 function buttonDefault(button) {
     switch (button) {
-        case 'red':
+        case GameColors.red:
             buttonRed.style.background = "darkRed";
             break;
-        case 'blue':
+        case GameColors.blue:
             buttonBlue.style.background = "darkBlue";
             break;
-        case 'green':
+        case GameColors.green:
             buttonGreen.style.background = "darkGreen";
             break;
-        case 'yellow':
+        case GameColors.yellow:
             buttonYellow.style.background = "goldenrod";
             break;
     };
