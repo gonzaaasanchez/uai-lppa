@@ -10,6 +10,10 @@ var buttonYellow = document.getElementById('yellow');
 var labelScore = document.getElementById('score');
 var labelState = document.getElementById('state');
 
+window.onload = function () {
+    clearGame();
+}
+
 // listeners
 
 buttonStart.addEventListener('click', function () {
@@ -118,7 +122,8 @@ function colorClicked(color) {
             var currentColorIndex = sequenceEntered.length - 1
 
             if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
-                showPoints();
+                currentPoints += 1;
+                showPoints(currentPoints);
                 if (sequenceEntered.length == sequence.length) {
                     setGameState(PlayingStatus.sequenceCorrect);
                     setTimeout(() => {
@@ -178,19 +183,17 @@ function clearGame() {
     currentPoints = 0;
     sequence = [];
     clearSequenceEntered();
-    labelScore.innerText = 'PUNTOS: 0'
+    setGameState(PlayingStatus.notStarted);
+    setStartButton('INICIAR');
+    showPoints(0);
 }
 
 function gameLost() {
     clearGame();
-    setGameState(PlayingStatus.notStarted);
-    setStartButton('INICIAR');
 }
 
-
-function showPoints() {
-    currentPoints += 1;
-    labelScore.innerText = 'PUNTOS: ' + currentPoints
+function showPoints(value) {
+    labelScore.innerText = 'PUNTOS: ' + value;
 }
 
 function clearSequenceEntered() {
