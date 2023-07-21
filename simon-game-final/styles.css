@@ -80,6 +80,11 @@ h4 {
   margin-bottom: 10px;
 }
 
+input {
+  /* for safari iphone */
+  border-radius: 0;
+}
+
 .name-input {
   border: none;
   outline: none var(--dark-grey-color);
