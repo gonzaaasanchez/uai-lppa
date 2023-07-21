@@ -59,6 +59,14 @@ h1 {
 }
 
 h2 {
+  font-size: 16px;
+  font-weight: lighter;
+  color: greenyellow;
+  margin-top: 25px;
+  margin-right: 8px;
+}
+
+h3 {
   font-size: 15px;
   font-weight: lighter;
   color: white;
@@ -67,8 +75,22 @@ h2 {
   margin-right: 20px;
 }
 
-h3 {
+h4 {
   margin-bottom: 10px;
+}
+
+.name-input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid beige;
+  font-family: "Retro Gaming";
+  font-size: 16px;
+  color: greenyellow;
+  padding-top: 25px;
+  text-transform: uppercase; 
+  width: 18px;
+  min-width: 18px;
 }
 
 /* device */

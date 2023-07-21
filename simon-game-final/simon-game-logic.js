@@ -10,11 +10,13 @@ var buttonYellow = document.getElementById('yellow');
 var labelScore = document.getElementById('score');
 var labelState = document.getElementById('state');
 
-window.onload = function () {
-    clearGame();
-}
+var nameInput = document.getElementById("input-name");
 
 // listeners
+
+nameInput.addEventListener("input", function () {
+    nameInput.style.width = this.value.length + "ch";
+});
 
 buttonStart.addEventListener('click', function () {
     newGame();
@@ -72,7 +74,17 @@ var showingLevelSecuence = false;
 
 // functions
 
+window.onload = function () {
+    clearGame();
+}
+
 function newGame() {
+    if (nameInput.value.length < 3) {
+        // TODO mostrar modal
+        alert('Ingresa un nombre de más de 3 caracteres');
+        return;
+    }
+    nameInput.disabled = true;
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
         setStartButton('EN CURSO');
@@ -131,8 +143,8 @@ function colorClicked(color) {
                     }, 2000);
                 }
             } else {
-                // TODO mostrar modal
                 gameLost();
+                // TODO mostrar modal
                 alert('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
             }
         }
@@ -182,6 +194,7 @@ function clearGame() {
     currentLevel = 0
     currentPoints = 0;
     sequence = [];
+    nameInput.disabled = false;
     clearSequenceEntered();
     setGameState(PlayingStatus.notStarted);
     setStartButton('INICIAR');
