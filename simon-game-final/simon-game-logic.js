@@ -12,6 +12,10 @@ var labelState = document.getElementById('state');
 
 var nameInput = document.getElementById("input-name");
 
+var modal = document.getElementById("modal");
+var modalMessage = document.getElementById("modal-message");
+var modalClose = document.getElementById("modal-close");
+
 // listeners
 
 nameInput.addEventListener("input", function () {
@@ -46,6 +50,10 @@ buttonYellow.addEventListener('click', function () {
     }
 });
 
+modalClose.addEventListener('click', function () {
+    closeModal();
+});
+
 // const
 
 const PlayingStatus = {
@@ -78,10 +86,18 @@ window.onload = function () {
     clearGame();
 }
 
+function openModal(message) {
+    modalMessage.innerText = message;
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
 function newGame() {
     if (nameInput.value.length < 3) {
-        // TODO mostrar modal
-        alert('Ingresa un nombre de más de 3 caracteres');
+        openModal('Ingresá un nombre de más de 3 caracteres');
         return;
     }
     nameInput.disabled = true;
@@ -144,8 +160,7 @@ function colorClicked(color) {
                 }
             } else {
                 gameLost();
-                // TODO mostrar modal
-                alert('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
+                openModal('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
             }
         }
     }
