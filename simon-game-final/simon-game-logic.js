@@ -10,16 +10,16 @@ var buttonYellow = document.getElementById('yellow');
 var labelScore = document.getElementById('score');
 var labelState = document.getElementById('state');
 
-var nameInput = document.getElementById("input-name");
+var nameInput = document.getElementById('input-name');
 
-var modal = document.getElementById("modal");
-var modalMessage = document.getElementById("modal-message");
-var modalClose = document.getElementById("modal-close");
+var modal = document.getElementById('modal');
+var modalMessage = document.getElementById('modal-message');
+var modalClose = document.getElementById('modal-close');
 
 // listeners
 
-nameInput.addEventListener("input", function () {
-    nameInput.style.width = this.value.length + "ch";
+nameInput.addEventListener('input', function () {
+    nameInput.style.width = this.value.length + 'ch';
 });
 
 buttonStart.addEventListener('click', function () {
@@ -88,11 +88,11 @@ window.onload = function () {
 
 function openModal(message) {
     modalMessage.innerText = message;
-    modal.style.display = "flex";
+    modal.style.display = 'flex';
 }
 
 function closeModal() {
-    modal.style.display = "none";
+    modal.style.display = 'none';
 }
 
 function newGame() {
@@ -119,7 +119,7 @@ function createLevel() {
 }
 
 function playAudio(color) {
-    document.getElementById(color + "-sound").play();
+    document.getElementById(color + '-sound').play();
 }
 
 function showLevelSequence(colorIndex) {
@@ -169,16 +169,16 @@ function colorClicked(color) {
 function buttonPressed(button) {
     switch (button) {
         case GameColors.red:
-            buttonRed.style.background = "tomato";
+            buttonRed.style.background = 'tomato';
             break;
         case GameColors.blue:
-            buttonBlue.style.background = "lightskyblue";
+            buttonBlue.style.background = 'lightskyblue';
             break;
         case GameColors.green:
-            buttonGreen.style.background = "lightgreen";
+            buttonGreen.style.background = 'lightgreen';
             break;
         case GameColors.yellow:
-            buttonYellow.style.background = "yellow";
+            buttonYellow.style.background = 'yellow';
             break;
     };
     playAudio(button);
@@ -190,16 +190,16 @@ function buttonPressed(button) {
 function buttonDefault(button) {
     switch (button) {
         case GameColors.red:
-            buttonRed.style.background = "darkRed";
+            buttonRed.style.background = 'darkRed';
             break;
         case GameColors.blue:
-            buttonBlue.style.background = "darkBlue";
+            buttonBlue.style.background = 'darkBlue';
             break;
         case GameColors.green:
-            buttonGreen.style.background = "darkGreen";
+            buttonGreen.style.background = 'darkGreen';
             break;
         case GameColors.yellow:
-            buttonYellow.style.background = "goldenrod";
+            buttonYellow.style.background = 'goldenrod';
             break;
     };
 }
