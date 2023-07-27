@@ -75,8 +75,6 @@ function submit() {
         const body = messageInput.value + '\n' + nameInput.value;
         const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        console.log(mailtoUrl);
-
         window.location.href = mailtoUrl;
     }
 }
