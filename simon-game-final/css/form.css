@@ -48,8 +48,14 @@ h1 {
 .input-container {
     padding: 15px 0px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    text-align: right;
     width: 70%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
 }
 
 label {
@@ -68,6 +74,12 @@ input {
     font-family: "Retro Gaming";
     color: white;
     width: 100%;
+}
+
+.error {
+    margin-top: 2px;
+    color: red;
+    font-size: 10px;
 }
 
 .form-button {
