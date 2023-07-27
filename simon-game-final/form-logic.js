@@ -70,6 +70,13 @@ function submit() {
     var emailOk = validateEmail().length == 0;
     var messageOk = validateMessage().length == 0;
     if (nameOk && emailOk && messageOk) {
+        const recipient = emailInput.value;
+        const subject = 'Contacto desde Juego Simón - Final';
+        const body = messageInput.value + '\n' + nameInput.value;
+        const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
+        console.log(mailtoUrl);
+
+        window.location.href = mailtoUrl;
     }
 }
