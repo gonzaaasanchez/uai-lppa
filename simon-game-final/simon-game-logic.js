@@ -17,6 +17,7 @@ var modalMessage = document.getElementById('modal-message');
 var modalClose = document.getElementById('modal-close');
 
 var buttonGithub = document.getElementById('button-github');
+var buttonScore = document.getElementById('button-score');
 var buttonContact = document.getElementById('button-contact');
 
 // listeners
@@ -64,6 +65,10 @@ buttonGithub.addEventListener('click', function () {
 
 buttonContact.addEventListener('click', function () {
     window.location.href = 'contact.html';
+});
+
+buttonScore.addEventListener('click', function () {
+    openModal('PRÓXIMAMENTE');
 });
 
 // const
