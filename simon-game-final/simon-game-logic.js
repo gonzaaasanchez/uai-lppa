@@ -16,6 +16,9 @@ var modal = document.getElementById('modal');
 var modalMessage = document.getElementById('modal-message');
 var modalClose = document.getElementById('modal-close');
 
+var buttonGithub = document.getElementById('button-github');
+var buttonContact = document.getElementById('button-contact');
+
 // listeners
 
 nameInput.addEventListener('input', function () {
@@ -52,6 +55,15 @@ buttonYellow.addEventListener('click', function () {
 
 modalClose.addEventListener('click', function () {
     closeModal();
+});
+
+
+buttonGithub.addEventListener('click', function () {
+    window.open('https://github.com/gonzaaasanchez/uai-lppa/tree/main/simon-game-final', '_blank');
+});
+
+buttonContact.addEventListener('click', function () {
+    window.location.href = 'contact.html';
 });
 
 // const
