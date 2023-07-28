@@ -88,3 +88,14 @@ input {
     cursor: pointer;
     margin-top: 25px;
 }
+
+/* responsive */
+
+@media screen and (min-width: 1200px) {
+
+    .form-content {
+        width: 50%;
+        margin: 15% auto;
+    }
+
+}
