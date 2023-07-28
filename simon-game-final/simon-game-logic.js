@@ -73,14 +73,14 @@ buttonScore.addEventListener('click', function () {
 
 // const
 
-const PlayingStatus = {
+var PlayingStatus = {
     notStarted: 'JUEGO NO INICIADO',
     sequenceShowing: 'MOSTRANDO SECUENCIA',
     sequenceWaiting: 'INGRESÁ LA SECUENCIA',
     sequenceCorrect: '¡CORRECTO!',
 };
 
-const GameColors = {
+var GameColors = {
     green: 'green',
     red: 'red',
     blue: 'blue',
@@ -101,7 +101,7 @@ var showingLevelSecuence = false;
 
 window.onload = function () {
     clearGame();
-}
+};
 
 function openModal(message) {
     modalMessage.innerText = message;
@@ -129,7 +129,7 @@ function newGame() {
 }
 
 function createLevel() {
-    const randomColor = gameColors[Math.floor(Math.random() * gameColors.length)];
+    var randomColor = gameColors[Math.floor(Math.random() * gameColors.length)];
     sequence.push(randomColor);
     clearSequenceEntered();
     showLevelSequence(0);
@@ -144,10 +144,10 @@ function showLevelSequence(colorIndex) {
     setGameState(PlayingStatus.sequenceShowing);
     buttonPressed(sequence[colorIndex]);
     setTimeout(() => {
-        var nextColorIndex = colorIndex + 1
+        var nextColorIndex = colorIndex + 1;
         if (nextColorIndex < sequence.length) {
             setTimeout(() => {
-                showLevelSequence(nextColorIndex)
+                showLevelSequence(nextColorIndex);
             }, 500);
         } else {
             showingLevelSecuence = false;
@@ -164,7 +164,7 @@ function colorClicked(color) {
 
         if (sequenceEntered.length <= sequence.length) {
 
-            var currentColorIndex = sequenceEntered.length - 1
+            var currentColorIndex = sequenceEntered.length - 1;
 
             if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
                 currentPoints += 1;
@@ -176,8 +176,8 @@ function colorClicked(color) {
                     }, 2000);
                 }
             } else {
-                gameLost();
                 openModal('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
+                gameLost();
             }
         }
     }
@@ -197,7 +197,7 @@ function buttonPressed(button) {
         case GameColors.yellow:
             buttonYellow.style.background = 'yellow';
             break;
-    };
+    }
     playAudio(button);
     setTimeout(() => {
         buttonDefault(button);
@@ -218,12 +218,12 @@ function buttonDefault(button) {
         case GameColors.yellow:
             buttonYellow.style.background = 'goldenrod';
             break;
-    };
+    }
 }
 
 function clearGame() {
     gameStarted = false;
-    currentLevel = 0
+    currentLevel = 0;
     currentPoints = 0;
     sequence = [];
     nameInput.disabled = false;
