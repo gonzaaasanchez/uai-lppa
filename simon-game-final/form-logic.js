@@ -29,7 +29,9 @@ function validateName() {
 
     var error = '';
     var regex = /^[a-zA-Z0-9]+$/;
-    if (nameValue.length == 0 || regex.test(nameValue)) {
+    if (nameValue.length == 0) {
+        error = 'El nombre no puede quedar en blaco';
+    } else if (regex.test(nameValue)) {
         error = 'El nombre debe ser alfanumérico';
     }
     nameError.innerText = error;
@@ -70,11 +72,10 @@ function submit() {
     var emailOk = validateEmail().length == 0;
     var messageOk = validateMessage().length == 0;
     if (nameOk && emailOk && messageOk) {
-        const recipient = emailInput.value;
-        const subject = 'Contacto desde Juego Simón - Final';
-        const body = messageInput.value + '\n' + nameInput.value;
-        const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+        var recipient = emailInput.value;
+        var subject = 'Contacto desde Juego Simón - Final';
+        var body = messageInput.value + '\n' + nameInput.value;
+        var mailtoUrl = 'mailto:' + encodeURIComponent(recipient) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         window.location.href = mailtoUrl;
     }
 }

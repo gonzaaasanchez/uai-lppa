@@ -122,7 +122,7 @@ function newGame() {
         gameStarted = true;
         setStartButton('EN CURSO');
         // audio not played and showing error inside setTimeout -> FIX
-        // setTimeout(() => {
+        // setTimeout(function() {
         createLevel();
         // }, 1000);
     }
@@ -143,10 +143,10 @@ function showLevelSequence(colorIndex) {
     showingLevelSecuence = true;
     setGameState(PlayingStatus.sequenceShowing);
     buttonPressed(sequence[colorIndex]);
-    setTimeout(() => {
+    setTimeout(function () {
         var nextColorIndex = colorIndex + 1;
         if (nextColorIndex < sequence.length) {
-            setTimeout(() => {
+            setTimeout(function () {
                 showLevelSequence(nextColorIndex);
             }, 500);
         } else {
@@ -171,7 +171,7 @@ function colorClicked(color) {
                 showPoints(currentPoints);
                 if (sequenceEntered.length == sequence.length) {
                     setGameState(PlayingStatus.sequenceCorrect);
-                    setTimeout(() => {
+                    setTimeout(function () {
                         createLevel();
                     }, 2000);
                 }
@@ -199,7 +199,7 @@ function buttonPressed(button) {
             break;
     }
     playAudio(button);
-    setTimeout(() => {
+    setTimeout(function() {
         buttonDefault(button);
     }, 250);
 }
