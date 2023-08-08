@@ -282,6 +282,7 @@ input {
 
 #modal-message {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-close {
@@ -290,6 +291,25 @@ input {
   font-weight: lighter;
   cursor: pointer;
   margin-top: 25px;
+}
+
+.ranking-list {
+  /* columns: 2;
+  list-style-type: none;
+  padding: 0; */
+  list-style-type: none;
+  padding: 0;
+}
+
+.ranking-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+
+.ranking-item span {
+  flex: 1;
 }
 
 /* responsive */

@@ -1,4 +1,4 @@
-// html objects
+/* html objects */
 
 var buttonStart = document.getElementById('start-button');
 
@@ -22,7 +22,11 @@ var buttonGithub = document.getElementById('button-github');
 var buttonScore = document.getElementById('button-score');
 var buttonContact = document.getElementById('button-contact');
 
-// listeners
+var ranking = document.getElementById('ranking');
+var rankingList = document.getElementById('ranking-list');
+var rankingClose = document.getElementById('ranking-close');
+
+/* listeners */
 
 nameInput.addEventListener('input', function () {
     nameInput.style.width = this.value.length + 'ch';
@@ -61,6 +65,11 @@ modalClose.addEventListener('click', function () {
 });
 
 
+rankingClose.addEventListener('click', function () {
+    closeModal();
+});
+
+
 buttonGithub.addEventListener('click', function () {
     window.open('https://github.com/gonzaaasanchez/uai-lppa/tree/main/simon-game-final', '_blank');
 });
@@ -70,10 +79,10 @@ buttonContact.addEventListener('click', function () {
 });
 
 buttonScore.addEventListener('click', function () {
-    openModal('PRÓXIMAMENTE');
+    showRanking();
 });
 
-// const
+/* const */
 
 var PlayingStatus = {
     notStarted: 'JUEGO NO INICIADO',
@@ -89,7 +98,7 @@ var GameColors = {
     yellow: 'yellow',
 };
 
-// variables
+/* variables */
 
 var gameColors = [GameColors.green, GameColors.red, GameColors.blue, GameColors.yellow];
 var sequence = [];
@@ -103,7 +112,7 @@ var hours = 0;
 var minutes = 0;
 var seconds = 0;
 
-// functions
+/* functions  */
 
 window.onload = function () {
     clearGame();
@@ -116,6 +125,7 @@ function openModal(message) {
 
 function closeModal() {
     modal.style.display = 'none';
+    ranking.style.display = 'none';
 }
 
 function newGame() {
@@ -220,7 +230,8 @@ function colorClicked(color) {
                 var penalization = 'Penalización: ' + calculatePenalization();
                 var final = 'PUNTAJE FINAL: ' + (currentPoints - calculatePenalization());
                 openModal('Ingresaste un color incorrecto! Perdiste :(\n' + points + '\n' + penalization + '\n' + final);
-                gameLost();
+                saveResult();
+                clearGame();
             }
         }
     }
@@ -257,11 +268,52 @@ function buttonDefault(button) {
             break;
         case GameColors.green:
             buttonGreen.style.background = 'darkGreen';
-            break;
         case GameColors.yellow:
             buttonYellow.style.background = 'goldenrod';
             break;
     }
+}
+
+function getRanking() {
+    var storedRanking = localStorage.getItem('ranking');
+    return storedRanking ? JSON.parse(storedRanking) : [];
+}
+
+function updateRanking(newItem) {
+    var ranking = getRanking();
+    console.log(ranking);
+
+    ranking.push(newItem);
+    // ranking.sort((a, b) => b.score - a.score); // Assuming 'score' is the property by which you want to rank
+    localStorage.setItem('ranking', JSON.stringify(ranking));
+}
+
+function saveResult() {
+    var result = {
+        name: nameInput.value,
+        level: currentLevel,
+        points: currentPoints,
+        date: Date(Date.now()),
+    };
+    console.log(result);
+    updateRanking(result);
+
+    var updatedRanking = getRanking();
+    console.log(updatedRanking);
+}
+
+function showRanking() {
+    ranking.style.display = 'flex';
+    var storedRanking = getRanking();
+
+    rankingList.innerHTML = '';
+
+    storedRanking.forEach((item, _) => {
+        var rankingItem = document.createElement('li');
+        rankingItem.classList.add('ranking-item');
+        rankingItem.innerHTML = `<span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${item.date}</span>`;
+        rankingList.appendChild(rankingItem);
+    });
 }
 
 function clearGame() {
@@ -278,9 +330,6 @@ function clearGame() {
     clearTimer();
 }
 
-function gameLost() {
-    clearGame();
-}
 
 function showLevel(value) {
     labelLevel.innerText = 'Lvl: ' + value;
