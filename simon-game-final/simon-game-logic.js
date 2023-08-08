@@ -7,6 +7,7 @@ var buttonRed = document.getElementById('red');
 var buttonBlue = document.getElementById('blue');
 var buttonYellow = document.getElementById('yellow');
 
+var labelLevel = document.getElementById('level');
 var labelScore = document.getElementById('score');
 var labelTimer = document.getElementById('timer');
 var labelState = document.getElementById('state');
@@ -166,6 +167,8 @@ function calculatePenalization() {
 }
 
 function createLevel() {
+    currentLevel++;
+    showLevel(currentLevel);
     var randomColor = gameColors[Math.floor(Math.random() * gameColors.length)];
     sequence.push(randomColor);
     clearSequenceEntered();
@@ -270,6 +273,7 @@ function clearGame() {
     clearSequenceEntered();
     setGameState(PlayingStatus.notStarted);
     setStartButton('INICIAR');
+    showLevel(0);
     showPoints(0);
     clearTimer();
 }
@@ -278,8 +282,12 @@ function gameLost() {
     clearGame();
 }
 
+function showLevel(value) {
+    labelLevel.innerText = 'Lvl: ' + value;
+}
+
 function showPoints(value) {
-    labelScore.innerText = 'PUNTOS: ' + value;
+    labelScore.innerText = 'Pts: ' + value;
 }
 
 function showTimer(value) {
