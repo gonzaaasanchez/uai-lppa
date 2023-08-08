@@ -302,6 +302,10 @@ input {
   margin-top: 25px;
 }
 
+.ranking-item-title {
+  cursor: pointer;
+}
+
 .ranking-item {
   display: flex;
   justify-content: space-between;

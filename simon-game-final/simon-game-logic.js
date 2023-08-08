@@ -26,6 +26,12 @@ var ranking = document.getElementById('ranking');
 var rankingList = document.getElementById('ranking-list');
 var rankingClose = document.getElementById('ranking-close');
 
+var rankingPositionButton = document.getElementById('ranking-position-title');
+var rankingNameButton = document.getElementById('ranking-name-title');
+var rankingLevelButton = document.getElementById('ranking-level-title');
+var rankingPointsButton = document.getElementById('ranking-points-title');
+var rankingDateButton = document.getElementById('ranking-date-title');
+
 /* listeners */
 
 nameInput.addEventListener('input', function () {
@@ -79,7 +85,27 @@ buttonContact.addEventListener('click', function () {
 });
 
 buttonScore.addEventListener('click', function () {
-    showRanking();
+    showRanking(RankingOrder.points);
+});
+
+rankingPositionButton.addEventListener('click', function () {
+    showRanking(RankingOrder.points);
+});
+
+rankingNameButton.addEventListener('click', function () {
+    showRanking(RankingOrder.name);
+});
+
+rankingLevelButton.addEventListener('click', function () {
+    showRanking(RankingOrder.level);
+});
+
+rankingPointsButton.addEventListener('click', function () {
+    showRanking(RankingOrder.points);
+});
+
+rankingDateButton.addEventListener('click', function () {
+    showRanking(RankingOrder.date);
 });
 
 /* const */
@@ -97,6 +123,13 @@ var GameColors = {
     blue: 'blue',
     yellow: 'yellow',
 };
+
+var RankingOrder = {
+    name: 'name',
+    level: 'level',
+    points: 'points',
+    date: 'date',
+}
 
 /* variables */
 
@@ -295,25 +328,48 @@ function saveResult() {
     console.log(updatedRanking);
 }
 
-function showRanking() {
+function showRanking(order) {
     ranking.style.display = 'flex';
     rankingList.innerHTML = '';
 
     var storedRanking = getRanking();
     storedRanking = storedRanking.sort((a, b) => b.points - a.points);
-    storedRanking = storedRanking.slice(0, 10)
-    while (storedRanking.length < 10) {
-        storedRanking.push({
-            name: '-',
-            level: '-',
-            points: '-',
-            date: '-',
-        });
+    storedRanking = storedRanking.slice(0, 10);
+
+    var rankingWithPosition = storedRanking.map((item, index) => ({
+        ...item,  // Copy existing properties
+        position: index + 1,
+    }));
+
+    switch (order) {
+        case RankingOrder.name:
+            rankingWithPosition = rankingWithPosition.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case RankingOrder.level:
+            rankingWithPosition = rankingWithPosition.sort((a, b) => b.level - a.level);
+            break;
+        case RankingOrder.points:;
+            rankingWithPosition = rankingWithPosition.sort((a, b) => b.points - a.points);
+            break;
+        case RankingOrder.date:
+            rankingWithPosition = rankingWithPosition.sort((a, b) => Date(b.date) > Date(a.date));
+            break;
     }
-    storedRanking.forEach((item, index) => {
+
+    // Complete 10 if needed?
+    // while (rankingWithPosition.length < 10) {
+    //     rankingWithPosition.push({
+    //         name: '-',
+    //         level: '-',
+    //         points: '-',
+    //         date: '-',
+    //     });
+    // }
+
+    rankingWithPosition.forEach(item => {
         var rankingItem = document.createElement('li');
         rankingItem.classList.add('ranking-item');
-        rankingItem.innerHTML = `<span>#${index + 1}</span><span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${visualFormattedDatetime(item.date)}</span>`;
+        rankingItem.innerHTML = `<span>#${item.position}</span><span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${visualFormattedDatetime(item.date)}</span>`;
         rankingList.appendChild(rankingItem);
     });
 }
