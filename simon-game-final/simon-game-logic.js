@@ -356,15 +356,15 @@ function showRanking(order) {
             break;
     }
 
-    // Complete 10 if needed?
-    // while (rankingWithPosition.length < 10) {
-    //     rankingWithPosition.push({
-    //         name: '-',
-    //         level: '-',
-    //         points: '-',
-    //         date: '-',
-    //     });
-    // }
+    while (rankingWithPosition.length < 10) {
+        rankingWithPosition.push({
+            name: '-',
+            level: '-',
+            points: '-',
+            date: '-',
+            position: 10,
+        });
+    }
 
     rankingWithPosition.forEach(item => {
         var rankingItem = document.createElement('li');
