@@ -138,6 +138,7 @@ var sequence = [];
 var sequenceEntered = [];
 var currentLevel = 0;
 var currentPoints = 0;
+var finalPoints = 0;
 var gameStarted = false;
 var showingLevelSecuence = false;
 var timer;
@@ -189,7 +190,7 @@ function startTimer() {
                 hours++;
             }
         }
-        showTimer(formatInt(hours) + ':' + formatInt(minutes) + ':' + formatInt(seconds));
+        showTimer(to2Places(hours) + ':' + to2Places(minutes) + ':' + to2Places(seconds));
     }, 1000);
 }
 
@@ -308,24 +309,21 @@ function updateRanking(newItem) {
 }
 
 function showFinalResults() {
+    finalPoints = currentPoints - calculatePenalization();
     var points = 'Puntos alcanzados: ' + currentPoints;
     var penalization = 'Penalización: ' + calculatePenalization();
-    var final = 'PUNTAJE FINAL: ' + (currentPoints - calculatePenalization());
-    openModal('Ingresaste un color incorrecto! Perdiste :(\n' + points + '\n' + penalization + '\n' + final);
+    var final = 'PUNTAJE FINAL: ' + finalPoints;
+    openModal('Ingresaste un color incorrecto! Perdiste :(\n\n' + points + '\n' + penalization + '\n\n' + final);
 }
 
 function saveResult() {
     var result = {
         name: nameInput.value,
         level: currentLevel,
-        points: currentPoints,
+        points: finalPoints,
         date: Date(Date.now()),
     };
-    console.log(result);
     updateRanking(result);
-
-    var updatedRanking = getRanking();
-    console.log(updatedRanking);
 }
 
 function showRanking(order) {
@@ -337,7 +335,7 @@ function showRanking(order) {
     storedRanking = storedRanking.slice(0, 10);
 
     var rankingWithPosition = storedRanking.map((item, index) => ({
-        ...item,  // Copy existing properties
+        ...item,
         position: index + 1,
     }));
 
@@ -378,6 +376,7 @@ function clearGame() {
     gameStarted = false;
     currentLevel = 0;
     currentPoints = 0;
+    finalPoints = 0;
     sequence = [];
     nameInput.disabled = false;
     clearSequenceEntered();
@@ -428,7 +427,7 @@ function setStartButton(title) {
 
 /* utils */
 
-function formatInt(value) {
+function to2Places(value) {
     return String(value).padStart(2, '0');
 }
 
@@ -441,11 +440,11 @@ function visualFormattedDatetime(datetime) {
     if (isNaN(parsedDate)) {
         return '-';
     }
-    var day = parsedDate.getDate().toString().padStart(2, '0');
-    var month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+    var day = to2Places(parsedDate.getDate());
+    var month = to2Places(parsedDate.getMonth() + 1);
     var year = parsedDate.getFullYear();
-    var hours = parsedDate.getHours().toString().padStart(2, '0');
-    var minutes = parsedDate.getMinutes().toString().padStart(2, '0');
+    var hours = to2Places(parsedDate.getHours());
+    var minutes = to2Places(parsedDate.getMinutes());
 
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
