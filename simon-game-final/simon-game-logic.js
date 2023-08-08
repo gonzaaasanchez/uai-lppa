@@ -129,7 +129,7 @@ var RankingOrder = {
     level: 'level',
     points: 'points',
     date: 'date',
-}
+};
 
 /* variables */
 
@@ -291,6 +291,7 @@ function buttonDefault(button) {
             break;
         case GameColors.green:
             buttonGreen.style.background = 'darkGreen';
+            break;
         case GameColors.yellow:
             buttonYellow.style.background = 'goldenrod';
             break;
@@ -331,7 +332,7 @@ function showRanking(order) {
     rankingList.innerHTML = '';
 
     var storedRanking = getRanking();
-    storedRanking = storedRanking.sort((a, b) => b.points - a.points);
+    storedRanking = storedRanking.sort(function (a, b) { return b.points - a.points; });
     storedRanking = storedRanking.slice(0, 10);
 
     var rankingWithPosition = storedRanking.map((item, index) => ({
@@ -341,16 +342,16 @@ function showRanking(order) {
 
     switch (order) {
         case RankingOrder.name:
-            rankingWithPosition = rankingWithPosition.sort((a, b) => a.name.localeCompare(b.name));
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return a.name.localeCompare(b.name); });
             break;
         case RankingOrder.level:
-            rankingWithPosition = rankingWithPosition.sort((a, b) => b.level - a.level);
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return b.level - a.level; });
             break;
-        case RankingOrder.points:;
-            rankingWithPosition = rankingWithPosition.sort((a, b) => b.points - a.points);
+        case RankingOrder.points:
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return b.points - a.points; });
             break;
         case RankingOrder.date:
-            rankingWithPosition = rankingWithPosition.sort((a, b) => Date(b.date) > Date(a.date));
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return Date(b.date) > Date(a.date); });
             break;
     }
 
@@ -364,12 +365,16 @@ function showRanking(order) {
         });
     }
 
-    rankingWithPosition.forEach(item => {
+    rankingWithPosition.forEach(function (item) {
         var rankingItem = document.createElement('li');
         rankingItem.classList.add('ranking-item');
-        rankingItem.innerHTML = `<span>#${item.position}</span><span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${visualFormattedDatetime(item.date)}</span>`;
+        rankingItem.innerHTML = createSpanRankingItem('# ' + item.position) + createSpanRankingItem(item.name.toUpperCase()) + createSpanRankingItem(item.level) + createSpanRankingItem(item.points)+ createSpanRankingItem(visualFormattedDatetime(item.date));
         rankingList.appendChild(rankingItem);
     });
+}
+
+function createSpanRankingItem(value) {
+    return '<span>' + value + '</span>';
 }
 
 function clearGame() {
@@ -446,5 +451,5 @@ function visualFormattedDatetime(datetime) {
     var hours = to2Places(parsedDate.getHours());
     var minutes = to2Places(parsedDate.getMinutes());
 
-    return `${day}/${month}/${year} ${hours}:${minutes}`;
+    return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
 }
