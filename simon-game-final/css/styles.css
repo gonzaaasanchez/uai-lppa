@@ -11,10 +11,10 @@
   --device-button-size: 225px;
 
   --device-display-height: 100px;
-  --device-display-width: 200px;
+  --device-display-width: 220px;
   --device-display-top: 170px;
   /* (--device-size / 2 ) - (--device-display-height / 2) */
-  --device-display-left: 125px;
+  --device-display-left: 115px;
   /* (--device-size / 2 ) - (--device-display-width / 2) */
 
   /* mobile */
@@ -221,8 +221,14 @@ input {
 
 /* score */
 
+.score-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
 .score {
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 8px;
   color: #4dff00;
   border-radius: 3px;

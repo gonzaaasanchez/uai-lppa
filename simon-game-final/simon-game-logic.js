@@ -8,6 +8,7 @@ var buttonBlue = document.getElementById('blue');
 var buttonYellow = document.getElementById('yellow');
 
 var labelScore = document.getElementById('score');
+var labelTimer = document.getElementById('timer');
 var labelState = document.getElementById('state');
 
 var nameInput = document.getElementById('input-name');
@@ -96,6 +97,10 @@ var currentLevel = 0;
 var currentPoints = 0;
 var gameStarted = false;
 var showingLevelSecuence = false;
+var timer;
+var hours = 0;
+var minutes = 0;
+var seconds = 0;
 
 // functions
 
@@ -118,6 +123,7 @@ function newGame() {
         return;
     }
     nameInput.disabled = true;
+    startTimer();
     if (!gameStarted && !showingLevelSecuence) {
         gameStarted = true;
         setStartButton('EN CURSO');
@@ -126,6 +132,25 @@ function newGame() {
         createLevel();
         // }, 1000);
     }
+}
+
+function startTimer() {
+    timer = setInterval(function () {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+        showTimer(formatInt(hours) + ':' + formatInt(minutes) + ':' + formatInt(seconds));
+    }, 1000);
+}
+
+function formatInt(value) {
+    return String(value).padStart(2, '0');
 }
 
 function createLevel() {
@@ -177,6 +202,7 @@ function colorClicked(color) {
                 }
             } else {
                 openModal('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
+                // restar puntos por el timer
                 gameLost();
             }
         }
@@ -199,7 +225,7 @@ function buttonPressed(button) {
             break;
     }
     playAudio(button);
-    setTimeout(function() {
+    setTimeout(function () {
         buttonDefault(button);
     }, 250);
 }
@@ -231,6 +257,15 @@ function clearGame() {
     setGameState(PlayingStatus.notStarted);
     setStartButton('INICIAR');
     showPoints(0);
+    clearTimer();
+}
+
+function clearTimer() {
+    clearInterval(timer);
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    showTimer('00:00:00');
 }
 
 function gameLost() {
@@ -239,6 +274,10 @@ function gameLost() {
 
 function showPoints(value) {
     labelScore.innerText = 'PUNTOS: ' + value;
+}
+
+function showTimer(value) {
+    labelTimer.innerText = value;
 }
 
 function clearSequenceEntered() {
