@@ -149,8 +149,20 @@ function startTimer() {
     }, 1000);
 }
 
+function clearTimer() {
+    clearInterval(timer);
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    showTimer('00:00:00');
+}
+
 function formatInt(value) {
     return String(value).padStart(2, '0');
+}
+
+function calculatePenalization() {
+    return Math.trunc(((hours * 60 * 60) + (minutes * 60) + seconds) / 15);
 }
 
 function createLevel() {
@@ -201,8 +213,10 @@ function colorClicked(color) {
                     }, 2000);
                 }
             } else {
-                openModal('Ingresaste un color incorrecto! Perdiste :(\nPuntos alcanzados: ' + currentPoints);
-                // restar puntos por el timer
+                var points = 'Puntos alcanzados: ' + currentPoints;
+                var penalization = 'Penalización: ' + calculatePenalization();
+                var final = 'PUNTAJE FINAL: ' + (currentPoints - calculatePenalization());
+                openModal('Ingresaste un color incorrecto! Perdiste :(\n' + points + '\n' + penalization + '\n' + final);
                 gameLost();
             }
         }
@@ -258,14 +272,6 @@ function clearGame() {
     setStartButton('INICIAR');
     showPoints(0);
     clearTimer();
-}
-
-function clearTimer() {
-    clearInterval(timer);
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-    showTimer('00:00:00');
 }
 
 function gameLost() {
