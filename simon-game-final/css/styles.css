@@ -284,9 +284,14 @@ input {
   max-width: 1000px;
 }
 
-#modal-message {
+.modal-message {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+#ranking-title {
+  color: beige;
+  padding-bottom: 20px;
 }
 
 .modal-close {
@@ -297,15 +302,12 @@ input {
   margin-top: 25px;
 }
 
-.ranking-list {
-  padding: 0;
-}
-
 .ranking-item {
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
   padding: 8px;
+  font-size: 12px;
 }
 
 .ranking-item span {

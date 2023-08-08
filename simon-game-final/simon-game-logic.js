@@ -310,10 +310,10 @@ function showRanking() {
             date: '-',
         });
     }
-    storedRanking.forEach((item, _) => {
+    storedRanking.forEach((item, index) => {
         var rankingItem = document.createElement('li');
         rankingItem.classList.add('ranking-item');
-        rankingItem.innerHTML = `<span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${visualFormattedDatetime(item.date)}</span>`;
+        rankingItem.innerHTML = `<span>#${index + 1}</span><span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${visualFormattedDatetime(item.date)}</span>`;
         rankingList.appendChild(rankingItem);
     });
 }
@@ -332,9 +332,8 @@ function clearGame() {
     clearTimer();
 }
 
-
 function showLevel(value) {
-    labelLevel.innerText = 'Lvl: ' + value;
+    labelLevel.innerText = 'Nvl: ' + value;
 }
 
 function showPoints(value) {
