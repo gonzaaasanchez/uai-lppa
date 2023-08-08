@@ -280,6 +280,10 @@ input {
   font-size: 14px;
 }
 
+#ranking .modal-content {
+  max-width: 1000px;
+}
+
 #modal-message {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -294,17 +298,13 @@ input {
 }
 
 .ranking-list {
-  /* columns: 2;
-  list-style-type: none;
-  padding: 0; */
-  list-style-type: none;
   padding: 0;
 }
 
 .ranking-item {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
   padding: 8px;
 }
 

@@ -168,14 +168,6 @@ function clearTimer() {
     showTimer('00:00:00');
 }
 
-function formatInt(value) {
-    return String(value).padStart(2, '0');
-}
-
-function calculatePenalization() {
-    return Math.trunc(((hours * 60 * 60) + (minutes * 60) + seconds) / 15);
-}
-
 function createLevel() {
     currentLevel++;
     showLevel(currentLevel);
@@ -226,10 +218,7 @@ function colorClicked(color) {
                     }, 2000);
                 }
             } else {
-                var points = 'Puntos alcanzados: ' + currentPoints;
-                var penalization = 'Penalización: ' + calculatePenalization();
-                var final = 'PUNTAJE FINAL: ' + (currentPoints - calculatePenalization());
-                openModal('Ingresaste un color incorrecto! Perdiste :(\n' + points + '\n' + penalization + '\n' + final);
+                showFinalResults();
                 saveResult();
                 clearGame();
             }
@@ -281,11 +270,15 @@ function getRanking() {
 
 function updateRanking(newItem) {
     var ranking = getRanking();
-    console.log(ranking);
-
     ranking.push(newItem);
-    // ranking.sort((a, b) => b.score - a.score); // Assuming 'score' is the property by which you want to rank
     localStorage.setItem('ranking', JSON.stringify(ranking));
+}
+
+function showFinalResults() {
+    var points = 'Puntos alcanzados: ' + currentPoints;
+    var penalization = 'Penalización: ' + calculatePenalization();
+    var final = 'PUNTAJE FINAL: ' + (currentPoints - calculatePenalization());
+    openModal('Ingresaste un color incorrecto! Perdiste :(\n' + points + '\n' + penalization + '\n' + final);
 }
 
 function saveResult() {
@@ -304,14 +297,23 @@ function saveResult() {
 
 function showRanking() {
     ranking.style.display = 'flex';
-    var storedRanking = getRanking();
-
     rankingList.innerHTML = '';
 
+    var storedRanking = getRanking();
+    storedRanking = storedRanking.sort((a, b) => b.points - a.points);
+    storedRanking = storedRanking.slice(0, 10)
+    while (storedRanking.length < 10) {
+        storedRanking.push({
+            name: '-',
+            level: '-',
+            points: '-',
+            date: '-',
+        });
+    }
     storedRanking.forEach((item, _) => {
         var rankingItem = document.createElement('li');
         rankingItem.classList.add('ranking-item');
-        rankingItem.innerHTML = `<span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${item.date}</span>`;
+        rankingItem.innerHTML = `<span>${item.name.toUpperCase()}</span><span>${item.level}</span><span>${item.points}</span><span>${visualFormattedDatetime(item.date)}</span>`;
         rankingList.appendChild(rankingItem);
     });
 }
@@ -367,4 +369,28 @@ function setGameState(newState) {
 
 function setStartButton(title) {
     buttonStart.innerText = title;
+}
+
+/* utils */
+
+function formatInt(value) {
+    return String(value).padStart(2, '0');
+}
+
+function calculatePenalization() {
+    return Math.trunc(((hours * 60 * 60) + (minutes * 60) + seconds) / 15);
+}
+
+function visualFormattedDatetime(datetime) {
+    var parsedDate = new Date(datetime);
+    if (isNaN(parsedDate)) {
+        return '-';
+    }
+    var day = parsedDate.getDate().toString().padStart(2, '0');
+    var month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+    var year = parsedDate.getFullYear();
+    var hours = parsedDate.getHours().toString().padStart(2, '0');
+    var minutes = parsedDate.getMinutes().toString().padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
