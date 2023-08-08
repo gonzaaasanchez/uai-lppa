@@ -335,10 +335,15 @@ function showRanking(order) {
     storedRanking = storedRanking.sort(function (a, b) { return b.points - a.points; });
     storedRanking = storedRanking.slice(0, 10);
 
-    var rankingWithPosition = storedRanking.map((item, index) => ({
-        ...item,
-        position: index + 1,
-    }));
+    var rankingWithPosition = storedRanking.map(function (item, index) {
+        return {
+            position: index + 1, // add position number
+            name: item.name,
+            level: item.level,
+            points: item.points,
+            date: item.date,
+        };
+    });
 
     switch (order) {
         case RankingOrder.name:
@@ -368,7 +373,7 @@ function showRanking(order) {
     rankingWithPosition.forEach(function (item) {
         var rankingItem = document.createElement('li');
         rankingItem.classList.add('ranking-item');
-        rankingItem.innerHTML = createSpanRankingItem('# ' + item.position) + createSpanRankingItem(item.name.toUpperCase()) + createSpanRankingItem(item.level) + createSpanRankingItem(item.points)+ createSpanRankingItem(visualFormattedDatetime(item.date));
+        rankingItem.innerHTML = createSpanRankingItem('# ' + item.position) + createSpanRankingItem(item.name.toUpperCase()) + createSpanRankingItem(item.level) + createSpanRankingItem(item.points) + createSpanRankingItem(visualFormattedDatetime(item.date));
         rankingList.appendChild(rankingItem);
     });
 }
