@@ -75,7 +75,6 @@ rankingClose.addEventListener('click', function () {
     closeModal();
 });
 
-
 buttonGithub.addEventListener('click', function () {
     window.open('https://github.com/gonzaaasanchez/uai-lppa/tree/main/simon-game-final', '_blank');
 });
