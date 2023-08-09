@@ -310,7 +310,7 @@ input {
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
-  padding: 8px;
+  padding: 8px 0px 8px 0px;
   font-size: 12px;
 }
 
