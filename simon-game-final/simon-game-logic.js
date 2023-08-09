@@ -346,16 +346,24 @@ function showRanking(order) {
 
     switch (order) {
         case RankingOrder.name:
-            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return a.name.localeCompare(b.name); });
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+            });
             break;
         case RankingOrder.level:
-            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return b.level - a.level; });
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+                return b.level - a.level;
+            });
             break;
         case RankingOrder.points:
-            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return b.points - a.points; });
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+                return b.points - a.points;
+            });
             break;
         case RankingOrder.date:
-            rankingWithPosition = rankingWithPosition.sort(function (a, b) { return Date(b.date) > Date(a.date); });
+            rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+                return new Date(b.date) - new Date(a.date);
+            });
             break;
     }
 
