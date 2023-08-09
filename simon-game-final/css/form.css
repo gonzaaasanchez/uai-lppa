@@ -3,7 +3,8 @@
 /* constants */
 
 :root {
-  --dark-grey-color: #1f1f1f;
+  --dark-grey-color: #1f1f1f
+  ;
 }
 
 /* main content */
@@ -12,7 +13,7 @@ html {
   font-family: "Retro Gaming";
   font-size: 14px;
   background-color: var(--dark-grey-color);
-  color: white;
+  color: #ffffff;
 }
 
 body {
@@ -41,7 +42,7 @@ h1 {
   align-items: center;
   margin: 25% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #888888;
   width: 80%;
 }
 
@@ -59,7 +60,7 @@ h1 {
 }
 
 label {
-  color: beige;
+  color: #f5f5dc;
   margin-right: 10px;
 }
 
@@ -70,20 +71,20 @@ input {
   border: none;
   outline: none var(--dark-grey-color);
   background-color: transparent;
-  border-bottom: 1px solid beige;
+  border-bottom: 1px solid #f5f5dc;
   font-family: "Retro Gaming";
-  color: white;
+  color: #ffffff;
   width: 100%;
 }
 
 .error {
   margin-top: 2px;
-  color: red;
+  color: #ff0000;
   font-size: 10px;
 }
 
 .form-button {
-  color: greenyellow;
+  color: #adff2f;
   font-weight: lighter;
   cursor: pointer;
   margin-top: 25px;
