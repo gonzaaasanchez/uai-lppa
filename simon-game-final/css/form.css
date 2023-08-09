@@ -1,16 +1,15 @@
 @import url(https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming);
 
-/* constants */
+/* pseudo-class selectors */
 
 :root {
-  --dark-grey-color: #1f1f1f
-  ;
+  --dark-grey-color: #1f1f1f;
 }
 
-/* main content */
+/* element selectors */
 
 html {
-  font-family: "Retro Gaming";
+  font-family: 'Retro Gaming';
   font-size: 14px;
   background-color: var(--dark-grey-color);
   color: #ffffff;
@@ -29,6 +28,26 @@ h1 {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+label {
+  color: #f5f5dc;
+  margin-right: 10px;
+}
+
+input {
+  /* for safari iphone */
+  border-radius: 0;
+  font-size: 14px;
+  border: none;
+  outline: none var(--dark-grey-color);
+  background-color: transparent;
+  border-bottom: 1px solid #f5f5dc;
+  font-family: 'Retro Gaming';
+  color: #ffffff;
+  width: 100%;
+}
+
+/* id selectors */
 
 .main-content {
   position: fixed;
@@ -59,24 +78,6 @@ h1 {
   flex-direction: row;
 }
 
-label {
-  color: #f5f5dc;
-  margin-right: 10px;
-}
-
-input {
-  /* for safari iphone */
-  border-radius: 0;
-  font-size: 14px;
-  border: none;
-  outline: none var(--dark-grey-color);
-  background-color: transparent;
-  border-bottom: 1px solid #f5f5dc;
-  font-family: "Retro Gaming";
-  color: #ffffff;
-  width: 100%;
-}
-
 .error {
   margin-top: 2px;
   color: #ff0000;
@@ -90,7 +91,7 @@ input {
   margin-top: 25px;
 }
 
-/* responsive */
+/* media queries */
 
 @media screen and (min-width: 1200px) {
   .form-content {

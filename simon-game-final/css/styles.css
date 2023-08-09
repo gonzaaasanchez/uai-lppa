@@ -1,6 +1,6 @@
 @import url(https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming);
 
-/* constants */
+/* pseudo-class selectors */
 
 :root {
   /* desktop */
@@ -29,10 +29,10 @@
   --dark-grey-color: #1f1f1f;
 }
 
-/* main content */
+/* element selectors */
 
 html {
-  font-family: "Retro Gaming";
+  font-family: 'Retro Gaming';
   background-color: var(--dark-grey-color);
   color: #ffffff;
 }
@@ -45,35 +45,10 @@ body {
   min-height: 100vh;
 }
 
-.main-content {
-  flex: 1;
-}
-
 footer {
   padding: 30px;
   font-size: 14px;
 }
-
-.footer-copyright {
-  border-top: 1px solid #ffffff;
-  padding: 10px 50px 0px 50px;
-}
-
-.footer-menu {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.footer-menu-item {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/* titles */
 
 h1 {
   font-size: 36px;
@@ -108,12 +83,37 @@ input {
   border-radius: 0;
 }
 
+/* class selectors */
+
+.main-content {
+  flex: 1;
+}
+
+.footer-copyright {
+  border-top: 1px solid #ffffff;
+  padding: 10px 50px 0px 50px;
+}
+
+.footer-menu {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.footer-menu-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .name-input {
   border: none;
   outline: none var(--dark-grey-color);
   background-color: transparent;
   border-bottom: 1px solid #f5f5dc;
-  font-family: "Retro Gaming";
+  font-family: 'Retro Gaming';
   font-size: 16px;
   color: #adff2f;
   padding-top: 25px;
@@ -121,8 +121,6 @@ input {
   width: 18px;
   min-width: 18px;
 }
-
-/* device */
 
 .game-main-content {
   display: flex;
@@ -181,43 +179,19 @@ input {
   display: flex;
 }
 
-#green {
-  background-color: #006400;
-  border-radius: var(--device-button-size) 0 0 0;
-}
-
-#red {
-  background-color: #8b0000;
-  border-radius: 0 var(--device-button-size) 0 0;
-}
-
-#blue {
-  background-color: #00008b;
-  border-radius: 0 0 0 var(--device-button-size);
-}
-
-#yellow {
-  background-color: #daa520;
-  border-radius: 0 0 var(--device-button-size) 0;
-}
-
 .start-button {
-  font-family: "Retro Gaming";
+  font-family: 'Retro Gaming';
   color: #ffffff;
   cursor: pointer;
   background-color: transparent;
   margin-top: 12px;
 }
 
-/* state */
-
 .state {
   font-size: 10px;
   margin-top: 8px;
   color: #f5f5dc;
 }
-
-/* score */
 
 .score-content {
   display: flex;
@@ -232,13 +206,9 @@ input {
   border-radius: 3px;
 }
 
-/* sounds div */
-
 .sounds {
   display: none;
 }
-
-/* instructions */
 
 .instructions {
   padding: 20px;
@@ -248,14 +218,6 @@ input {
   margin: 40px;
   width: fit-content;
 }
-
-.instructions p {
-  margin-bottom: 8px;
-  font-weight: lighter;
-  font-size: 14px;
-}
-
-/* modal */
 
 .modal {
   display: none;
@@ -278,18 +240,9 @@ input {
   font-size: 14px;
 }
 
-#ranking .modal-content {
-  max-width: 1000px;
-}
-
 .modal-message {
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-#ranking-title {
-  color: #f5f5dc;
-  padding-bottom: 20px;
 }
 
 .modal-close {
@@ -316,7 +269,46 @@ input {
   flex: 1;
 }
 
-/* responsive */
+/* id selectors */
+
+#green {
+  background-color: #006400;
+  border-radius: var(--device-button-size) 0 0 0;
+}
+
+#red {
+  background-color: #8b0000;
+  border-radius: 0 var(--device-button-size) 0 0;
+}
+
+#blue {
+  background-color: #00008b;
+  border-radius: 0 0 0 var(--device-button-size);
+}
+
+#yellow {
+  background-color: #daa520;
+  border-radius: 0 0 var(--device-button-size) 0;
+}
+
+#ranking-title {
+  color: #f5f5dc;
+  padding-bottom: 20px;
+}
+
+/* descendant selectors */
+
+.instructions p {
+  margin-bottom: 8px;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+#ranking .modal-content {
+  max-width: 1000px;
+}
+
+/* media queries  */
 
 @media screen and (min-width: 1200px) {
   .instructions {
