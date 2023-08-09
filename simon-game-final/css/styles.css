@@ -3,7 +3,6 @@
 /* constants */
 
 :root {
-
   /* desktop */
 
   --device-size: 450px;
@@ -37,7 +36,6 @@ html {
   background-color: var(--dark-grey-color);
   color: white;
 }
-
 
 body {
   display: flex;
@@ -321,7 +319,6 @@ input {
 /* responsive */
 
 @media screen and (min-width: 1200px) {
-
   .instructions {
     left: 20px;
     top: 20px;
@@ -331,11 +328,9 @@ input {
     width: 200px;
     text-align: left;
   }
-
 }
 
 @media screen and (min-width: 900px) {
-
   .game-device {
     width: var(--device-size);
     height: var(--device-size);
@@ -353,5 +348,4 @@ input {
     top: var(--device-display-top);
     left: var(--device-display-left);
   }
-
 }
