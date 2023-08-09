@@ -269,16 +269,16 @@ function colorClicked(color) {
 function buttonPressed(button) {
   switch (button) {
     case GameColors.red:
-      buttonRed.style.background = 'tomato';
+      buttonRed.style.background = '#ff6347';
       break;
     case GameColors.blue:
-      buttonBlue.style.background = 'lightskyblue';
+      buttonBlue.style.background = '#87cefa';
       break;
     case GameColors.green:
-      buttonGreen.style.background = 'lightgreen';
+      buttonGreen.style.background = '#90ee90';
       break;
     case GameColors.yellow:
-      buttonYellow.style.background = 'yellow';
+      buttonYellow.style.background = '#ffff00';
       break;
   }
   playAudio(button);
@@ -290,16 +290,16 @@ function buttonPressed(button) {
 function buttonDefault(button) {
   switch (button) {
     case GameColors.red:
-      buttonRed.style.background = 'darkRed';
+      buttonRed.style.background = '#8b0000';
       break;
     case GameColors.blue:
-      buttonBlue.style.background = 'darkBlue';
+      buttonBlue.style.background = '#00008b';
       break;
     case GameColors.green:
-      buttonGreen.style.background = 'darkGreen';
+      buttonGreen.style.background = '#006400';
       break;
     case GameColors.yellow:
-      buttonYellow.style.background = 'goldenrod';
+      buttonYellow.style.background = '#daa520';
       break;
   }
 }
