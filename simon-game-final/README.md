@@ -21,6 +21,6 @@ https://gonzaaasanchez.github.io/uai-lppa/simon-game-final/simon-game.html
 - Poner un contador de tiempo al iniciar cada partida y utilizar el tiempo transcurridopara restar puntos de las partidas ganadas, es decir que el puntaje final de unapartida finalizada, debe ser la cantidad de botones presionados correctamentemenos la penalización por el tiempo demorado. Elegir la penalización que prefiera
 - Guardar los resultados de cada partida del juego usando LocalStorage, recordandoel nombre, puntaje, nivel y la fecha y hora de la partida
 - Agregar un botón para mostrar un popup con la lista de partidas con jugadores,puntajes y fechas. En este ranking debe estar ordenado por puntaje
-● Agregar la opción de ordenar el ranking por fecha o puntaje
+- Agregar la opción de ordenar el ranking por fecha o puntaje
 
 Si quieren que revise lo que hicieron antes de rendir, para saber si ya aprueban o no, me lotienen que presentar al menos tres días antes de rendir enviando el link del repositorio poremail a david.curras@uai.edu.ar .
